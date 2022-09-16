@@ -1,4 +1,4 @@
-import '../../domain/i_repositories/user_get_list_repository.dart';
+import '../../domain/i_repositories/users_repository.dart';
 import '../model/user.dart';
 
 // class UserGetListRepository {
@@ -8,7 +8,7 @@ import '../model/user.dart';
 //   }
 // }
 
-class UserGetListRepositoryImpl implements UserGetListRepository {
+class UsersRepositoryImpl implements UsersRepository {
   @override
   List<UserData> getUserList() {
     return [

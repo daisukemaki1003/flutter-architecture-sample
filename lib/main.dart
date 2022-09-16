@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/presentation/pages/diary/diary.dart';
 import 'package:man_memo_v2/presentation/pages/home/home.dart';
 
-import 'presentation/pages/calendar.dart';
+import 'presentation/pages/calendar/calendar.dart';
 import 'presentation/pages/setting_page.dart';
 
 void main() {

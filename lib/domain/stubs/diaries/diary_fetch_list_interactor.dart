@@ -1,15 +1,15 @@
-import 'package:man_memo_v2/data/repositories/diary_repository.dart';
+import 'package:man_memo_v2/data/repositories/diaries_repository.dart';
 import 'package:man_memo_v2/domain/entity/model/diary.dart';
-import 'package:man_memo_v2/domain/i_repositories/diary_repository.dart';
+import 'package:man_memo_v2/domain/i_repositories/diaries_repository.dart';
 
-import 'package:man_memo_v2/domain/usecases/diary/diary_fetch_list_usecase.dart';
+import 'package:man_memo_v2/domain/usecases/diaries/diary_fetch_list/diary_fetch_list_usecase.dart';
 
 import '../../../data/model/diary.dart';
-import '../../usecases/diary/diary_fetch_list_input.dart';
-import '../../usecases/diary/diary_fetch_list_output.dart';
+import '../../usecases/diaries/diary_fetch_list/diary_fetch_list_input.dart';
+import '../../usecases/diaries/diary_fetch_list/diary_fetch_list_output.dart';
 
 class DiaryFetchListInteractor implements DiaryFetchListUseCase {
-  DiaryRepository diaryRepository = DiaryRepositoryImpl();
+  DiariesRepository diaryRepository = DiariesRepositoryImpl();
 
   @override
   DiaryFetchListOutput handle(DiaryFetchListInput input) {

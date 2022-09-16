@@ -32,7 +32,7 @@ class DiaryPage extends ConsumerWidget {
         body: diaryViewModel.when(
           error: (err, _) => Text(err.toString()),
           loading: () => const CircularProgressIndicator(),
-          data: (data) => MyDiaryList(data),
+          data: (data) => MyDiaryList(data.diaries),
         ),
       ),
     );

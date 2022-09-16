@@ -35,8 +35,8 @@ dependencies:
   material_floating_search_bar: ^0.3.7
   syncfusion_flutter_calendar: ^20.2.49
   firebase_auth: ^3.9.0
-  # riverpod: ^1.0.3+1
   flutter_riverpod: ^1.0.3+1
+  hexcolor: ^2.0.7
 
 dev_dependencies:
   flutter_test:

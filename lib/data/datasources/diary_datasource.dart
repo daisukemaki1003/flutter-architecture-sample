@@ -1,6 +1,6 @@
 import '../model/diary.dart';
 
-class DiaryDatasource {
+class DiaryDataSource {
   List<DiaryData> fetchDiaryList() {
     List<DiaryData> data = [];
     data.add(DiaryData(DateTime.now(), ["name"],

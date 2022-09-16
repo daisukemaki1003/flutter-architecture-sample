@@ -8,7 +8,8 @@ class DiaryViewModel {
   DiaryViewModel(this.diaries);
 }
 
-final diaryViewModelProvider = FutureProvider.autoDispose((ref) async {
+final diaryViewModelProvider =
+    FutureProvider.autoDispose<DiaryViewModel>((ref) async {
   final futureDiaryList = ref.watch(diaryListStreamProvider.future);
   final diaryList = await futureDiaryList;
 
@@ -18,5 +19,5 @@ final diaryViewModelProvider = FutureProvider.autoDispose((ref) async {
           createdAt: diary.createdAt, userNames: diary.names, body: diary.body))
       .toList();
 
-  return diaries;
+  return DiaryViewModel(diaries);
 });
