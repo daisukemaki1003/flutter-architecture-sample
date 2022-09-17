@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/presentation/model/user_model.dart';
+import 'package:man_memo_v2/presentation/presenter/users/user_add_presenter.dart';
 
-import '../presenter/users/user_add_presenter.dart';
 import '../provider/users_provider.dart';
 import '../widgets/drawer_header.dart';
-import '../widgets/search_bar.dart';
+import 'search/search.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,59 +17,36 @@ class HomePage extends ConsumerWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         drawer: const MyDrawerHeader(),
-
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: Stack(
+          fit: StackFit.expand,
           children: [
-            Center(
-              child: users.when(
-                error: (err, _) => Text(err.toString()), //エラー時
-                loading: () => const CircularProgressIndicator(), //読み込み時
-                data: (data) => Text(data.toString()), //データ受け取り時
-              ),
+            users.when(
+              error: (err, _) => Text(err.toString()),
+              loading: () => const CircularProgressIndicator(),
+              data: (data) {
+                return Stack(children: [
+                  /// ユーザーリスト
+                  _userList(data),
+
+                  /// 追加ボタン
+                  Positioned(
+                    right: 10,
+                    bottom: 10,
+                    child: _addButton(),
+                  ),
+                ]);
+              },
             ),
 
-            _buildFloatingActionButton(),
-
-            /// 追加ボタン
-            // Positioned(
-            //   right: 10,
-            //   bottom: 10,
-            //   child: _buildFloatingActionButton(),
-            // ),
+            /// 検索バー
+            const MySerachBar(),
           ],
         ),
-
-        // body: Stack(
-        //   fit: StackFit.expand,
-        //   children: [
-        //     users.when(
-        //       error: (err, _) => Text(err.toString()),
-        //       loading: () => const CircularProgressIndicator(),
-        //       data: (data) {
-        //         return Stack(children: [
-        //           /// ユーザーリスト
-        //           _myUserList(data),
-
-        //           /// 追加ボタン
-        //           Positioned(
-        //             right: 10,
-        //             bottom: 10,
-        //             child: _buildFloatingActionButton(),
-        //           ),
-        //         ]);
-        //       },
-        //     ),
-
-        //     /// 検索バー
-        //     const MySerachBar(),
-        //   ],
-        // ),
       ),
     );
   }
 
-  Widget _myUserList(List<UserModel> users) {
+  Widget _userList(List<UserModel> users) {
     return ListView(
       children: [
         const SizedBox(height: 100),
@@ -80,14 +57,14 @@ class HomePage extends ConsumerWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             final user = users[index];
-            return _myUserListItem(user);
+            return _userListItem(user);
           },
         ),
       ],
     );
   }
 
-  Widget _myUserListItem(UserModel user) {
+  Widget _userListItem(UserModel user) {
     return Dismissible(
       key: ObjectKey(user),
       background: Container(
@@ -112,12 +89,9 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget _buildFloatingActionButton() {
+  Widget _addButton() {
     return GestureDetector(
-      onTap: () {
-        // homeViewModel.value!.add("name");
-        UserAddPresenter().handle("name");
-      },
+      onTap: () => UserAddPresenter().handle("1"),
       child: Container(
         height: 54,
         width: 54,

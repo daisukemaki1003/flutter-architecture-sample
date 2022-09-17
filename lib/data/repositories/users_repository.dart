@@ -6,12 +6,17 @@ class UsersRepositoryImpl implements UsersRepository {
   UsersDataSource usersDataSource = UsersDataSource();
 
   @override
-  add(String name) {
+  void add(String name) {
     usersDataSource.add(name);
   }
 
   @override
   List<UserData> fetchList() {
     return usersDataSource.fetchList();
+  }
+
+  @override
+  List<UserData> search(String searchText) {
+    return usersDataSource.search(searchText);
   }
 }
