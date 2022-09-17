@@ -18,7 +18,6 @@ class MeetingEntity {
   DateTime to;
 
   /// Background which is equivalent to color property of [Appointment].
-
   int background;
 
   /// IsAllDay which is equivalent to isAllDay property of [Appointment].

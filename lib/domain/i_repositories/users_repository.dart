@@ -1,5 +1,6 @@
 import '../../data/model/user.dart';
 
 abstract class UsersRepository {
-  List<UserData> getUserList();
+  add(String name);
+  List<UserData> fetchList();
 }

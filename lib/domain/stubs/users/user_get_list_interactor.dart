@@ -8,13 +8,12 @@ import '../../usecases/users/fetch_list/user_fetch_list_output.dart';
 import '../../usecases/users/fetch_list/user_fetch_list_usecase.dart';
 
 class UserFetchListInteractor implements UserFetchListUseCase {
-  UsersRepository userFetchListRepository = UsersRepositoryImpl();
+  UsersRepository usersRepository = UsersRepositoryImpl();
 
   @override
-  UserFetchListOutput handle(UserFetchListInput input) {
-    final userDataList = userFetchListRepository.getUserList();
-
-    List<UserEntity> userEntityList =
+  handle(UserFetchListInput input) {
+    final userDataList = usersRepository.fetchList();
+    final userEntityList =
         userDataList.map((userData) => translate(userData)).toList();
 
     return UserFetchListOutput(userEntityList);
