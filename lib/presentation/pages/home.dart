@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/presentation/model/user_model.dart';
-import 'package:man_memo_v2/presentation/presenter/users/user_add_presenter.dart';
 
 import '../provider/users_provider.dart';
 import '../widgets/drawer_header.dart';
@@ -12,7 +11,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final users = ref.watch(userListStreamProvider);
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -20,22 +18,19 @@ class HomePage extends ConsumerWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            users.when(
-              error: (err, _) => Text(err.toString()),
-              loading: () => const CircularProgressIndicator(),
-              data: (data) {
-                return Stack(children: [
-                  /// ユーザーリスト
-                  _userList(data),
+            Consumer(builder: (context, ref, _) {
+              final users = ref.watch(usersNotifierProvider);
+              return users.map(
+                error: (_) => const Text('On Error'),
+                loading: (_) => const CircularProgressIndicator(),
+                data: (data) => _userList(data.value),
+              );
+            }),
 
-                  /// 追加ボタン
-                  Positioned(
-                    right: 10,
-                    bottom: 10,
-                    child: _addButton(),
-                  ),
-                ]);
-              },
+            Positioned(
+              right: 10,
+              bottom: 10,
+              child: _addButton(ref),
             ),
 
             /// 検索バー
@@ -89,9 +84,12 @@ class HomePage extends ConsumerWidget {
     );
   }
 
-  Widget _addButton() {
+  Widget _addButton(WidgetRef ref) {
     return GestureDetector(
-      onTap: () => UserAddPresenter().handle("1"),
+      onTap: () {
+        ref.watch(usersActionsProvider).add("name");
+        ref.refresh(usersActionsProvider);
+      },
       child: Container(
         height: 54,
         width: 54,

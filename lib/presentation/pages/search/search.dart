@@ -53,26 +53,48 @@ class MySerachBar extends ConsumerWidget {
         ),
       ],
       builder: (context, transition) {
-        return repositoryListState.when(
-          error: (error, _) => Text(error.toString()),
-          loading: () => const CircularProgressIndicator(),
-          data: (users) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Material(
-                  color: Colors.white,
-                  elevation: 4.0,
-                  child: Column(
-                    children: users
-                        .map((user) => ListTile(
-                              title: Text(user.name),
-                              subtitle: const Text("body text"),
-                            ))
-                        .toList(),
-                  )),
-            );
-          },
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Material(
+            color: Colors.white,
+            elevation: 4.0,
+            child: repositoryListState.when(
+              error: (error, _) => Text(error.toString()),
+              loading: () => const Text("指定した検索キーワードをすべて含む検索結果は見つかりませんでした。"),
+              data: (users) {
+                return Column(
+                  children: users
+                      .map((user) => ListTile(
+                            title: Text(user.name),
+                            subtitle: const Text("body text"),
+                          ))
+                      .toList(),
+                );
+              },
+            ),
+          ),
         );
+
+        // return repositoryListState.when(
+        //   error: (error, _) => Text(error.toString()),
+        //   loading: () => const CircularProgressIndicator(),
+        //   data: (users) {
+        //     return ClipRRect(
+        //       borderRadius: BorderRadius.circular(8),
+        //       child: Material(
+        //           color: Colors.white,
+        //           elevation: 4.0,
+        //           child: Column(
+        //             children: users
+        //                 .map((user) => ListTile(
+        //                       title: Text(user.name),
+        //                       subtitle: const Text("body text"),
+        //                     ))
+        //                 .toList(),
+        //           )),
+        //     );
+        //   },
+        // );
       },
     );
   }

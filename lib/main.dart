@@ -37,6 +37,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final _screens = [
     const HomePage(),
     const DiaryPage(),
+    // const Profile(),
     const CalendarPage(),
     const SettingPage(),
   ];
@@ -59,7 +60,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.directions_subway), label: '日記'),
+              icon: Icon(Icons.directions_subway), label: 'プロフィール'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'カレンダー'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: '設定'),
         ],
