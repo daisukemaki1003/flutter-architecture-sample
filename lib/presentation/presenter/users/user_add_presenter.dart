@@ -8,15 +8,14 @@ import '../../model/user_model.dart';
 /// Provider
 final userAddPresenterProvider =
     FutureProvider.family<void, UserModel>((ref, user) async {
-  await UserAddPresenter().handle(user);
+  UserAddPresenter().handle(user);
 });
 
 class UserAddPresenter {
   final UserAddUseCase _usecase = UserAddInteractor();
 
-  handle(UserModel user) {
+  void handle(UserModel user) {
     final input = UserAddInput(user.name);
-    final output = _usecase.handle(input);
-    return output;
+    _usecase.handle(input);
   }
 }

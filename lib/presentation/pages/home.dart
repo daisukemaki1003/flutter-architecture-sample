@@ -4,7 +4,7 @@ import 'package:man_memo_v2/presentation/model/user_model.dart';
 
 import '../provider/users_provider.dart';
 import '../widgets/drawer_header.dart';
-import 'search/search.dart';
+import 'search.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
