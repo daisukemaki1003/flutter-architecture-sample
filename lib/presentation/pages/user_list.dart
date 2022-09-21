@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/model/user_model.dart';
 
-import '../provider/users_provider.dart';
+import '../model/user.dart';
+import '../provider/users/user_action_provider.dart';
+import '../provider/users/user_list_provider.dart';
 import '../widgets/drawer_header.dart';
-import 'search.dart';
+import 'search_results.dart';
+import 'user_detail.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,14 +20,16 @@ class HomePage extends ConsumerWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Consumer(builder: (context, ref, _) {
-              final users = ref.watch(usersNotifierProvider);
-              return users.map(
-                error: (_) => const Text('On Error'),
-                loading: (_) => const CircularProgressIndicator(),
-                data: (data) => _userList(data.value),
-              );
-            }),
+            Consumer(
+              builder: (context, ref, _) {
+                final users = ref.watch(usersNotifierProvider);
+                return users.map(
+                  error: (_) => const Text('On Error'),
+                  loading: (_) => const CircularProgressIndicator(),
+                  data: (data) => _userList(data.value),
+                );
+              },
+            ),
 
             Positioned(
               right: 10,
@@ -52,14 +56,14 @@ class HomePage extends ConsumerWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             final user = users[index];
-            return _userListItem(user);
+            return _userListItem(context, user);
           },
         ),
       ],
     );
   }
 
-  Widget _userListItem(UserModel user) {
+  Widget _userListItem(BuildContext context, UserModel user) {
     return Dismissible(
       key: ObjectKey(user),
       background: Container(
@@ -68,6 +72,7 @@ class HomePage extends ConsumerWidget {
       ),
       confirmDismiss: (DismissDirection direction) async {
         print("object");
+        return null;
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -78,7 +83,16 @@ class HomePage extends ConsumerWidget {
                 "https://gws-ug.jp/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"),
           ),
           title: Text(user.name),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return UserDetailScreen(user);
+                },
+              ),
+            );
+          },
         ),
       ),
     );

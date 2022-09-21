@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/diary_model.dart';
+import '../model/diary.dart';
 
 class MyDiaryList extends StatelessWidget {
   const MyDiaryList(this.diaries, {super.key});

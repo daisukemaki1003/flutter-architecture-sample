@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/pages/diary/diary.dart';
-import 'package:man_memo_v2/presentation/pages/home.dart';
+import 'package:man_memo_v2/presentation/pages/user_list.dart';
 
 import 'presentation/pages/calendar/calendar.dart';
+import 'presentation/pages/diary_list.dart';
 import 'presentation/pages/setting_page.dart';
 
 void main() {
@@ -35,9 +35,8 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final _screens = [
-    const HomePage(),
-    const DiaryPage(),
-    // const Profile(),
+    const HomeScreen(),
+    const DiaryListScreen(),
     const CalendarPage(),
     const SettingPage(),
   ];

@@ -1,7 +1,8 @@
-import 'package:man_memo_v2/data/model/user.dart';
+import 'user.dart';
 
-class UserDetailData {
-  final UserData user;
+class UserDetailModel {
+  UserModel userBase;
+
   final int age; // 年齢
   final String birthday; // 誕生日
   final String birthplace; // 出身地
@@ -10,8 +11,8 @@ class UserDetailData {
   final String occupation; // 職業
   final String memo; // メモ
 
-  UserDetailData({
-    required this.user,
+  UserDetailModel({
+    required this.userBase,
     required this.age,
     required this.birthday,
     required this.birthplace,

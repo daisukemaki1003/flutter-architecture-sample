@@ -1,3 +1,5 @@
+import 'package:man_memo_v2/data/model/user_detail.dart';
+
 import '../model/user.dart';
 
 class UsersDataSource {
@@ -35,5 +37,25 @@ class UsersDataSource {
     }
 
     return users;
+  }
+
+  /// 詳細データ取得
+  UserDetailData getDetail() {
+    UserData userData = UserData(
+      name: "test0",
+      userId: "0",
+      createdAt: DateTime.now(),
+    );
+
+    return UserDetailData(
+      user: userData,
+      age: 20,
+      birthday: "birthday",
+      birthplace: "birthplace",
+      residence: "residence",
+      holiday: 10,
+      occupation: "occupation",
+      memo: "memo",
+    );
   }
 }
