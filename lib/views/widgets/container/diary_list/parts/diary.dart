@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/presentation/provider/diary/diary_action.dart';
 
 import '../../../../models/diary.dart';
-import '../../../component/diary_list/parts/diary.dart';
+import '../../../components/diary_list/parts/diary.dart';
 import '../../diary/page.dart';
 
 class DiaryContainer extends ConsumerWidget {

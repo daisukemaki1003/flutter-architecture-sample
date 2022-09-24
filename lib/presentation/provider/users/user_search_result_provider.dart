@@ -30,23 +30,15 @@ class UserSearchNotifier extends StateNotifier<AsyncValue<List<UserModel>>> {
 
   /// ユーザー検索
   Future<void> search(String keyword) async {
-    final data = state.value;
-    if (data == null) {
-      // loading or error
-      return;
-    }
-
     final users = ref.watch(userListNotifierProvider);
     users.map(
       error: (_) => print('On Error'),
       loading: (_) => print("load"),
-      data: (data) {
-        for (var element in data.value) {
-          if (element.name.contains(keyword)) {
-            print(element.name);
-            state.value!.add(element);
-          }
-        }
+      data: (users) {
+        final data = users.value.users.where(
+          (user) => user.name.contains(keyword),
+        );
+        state = AsyncValue.data(data.toList());
       },
     );
   }

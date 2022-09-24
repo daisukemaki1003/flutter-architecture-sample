@@ -2,16 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-class DiaryListPageComponent extends StatelessWidget {
-  const DiaryListPageComponent(this.diaryListWidget, {super.key});
+import '../../container/diary_list/parts/diary_list.dart';
 
-  final Widget diaryListWidget;
+class DiaryListPageComponent extends StatelessWidget {
+  const DiaryListPageComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('日記', style: TextStyle(color: Colors.black)),
+        title: const Text('日記',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0.0,
         bottom: const PreferredSize(
@@ -25,8 +26,8 @@ class DiaryListPageComponent extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: diaryListWidget,
+      body: const SafeArea(
+        child: DiaryListContainer(),
       ),
     );
   }

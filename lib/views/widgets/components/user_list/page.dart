@@ -11,6 +11,7 @@ class UserListPageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         drawer: Drawer(
           child: ListView(

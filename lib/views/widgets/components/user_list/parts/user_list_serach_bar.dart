@@ -32,12 +32,15 @@ class SerachBarComponent extends StatelessWidget {
       width: isPortrait ? 600 : 500,
       debounceDelay: const Duration(milliseconds: 500),
       transition: CircularFloatingSearchBarTransition(),
-      onSubmitted: ((query) => search(query)),
+      onSubmitted: ((query) async => await search(query)),
       onFocusChanged: ((isFocused) => searchResultClear),
-      actions: null,
+      actions: const [],
       builder: (context, transition) {
         return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+          ),
           child: Material(
             color: Colors.white,
             elevation: 4.0,

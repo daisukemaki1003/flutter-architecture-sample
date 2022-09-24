@@ -2,20 +2,18 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/views/widgets/component/diary_editor/page.dart';
 
 import '../../../models/diary.dart';
+import '../../container/diary_editor/page.dart';
 import '../diary_editor/parts/markdown_body.dart';
 
 class DiaryPageComponent extends StatelessWidget {
   const DiaryPageComponent({
     super.key,
     required this.diary,
-    required this.save,
   });
 
   final Diary diary;
-  final Function() save;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,7 @@ class DiaryPageComponent extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const DiaryEditor();
+                    return const DiaryEditorContainer();
                   },
                 ),
               );

@@ -1,10 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 
 import '../../container/diary/parts/editor.dart';
 import '../../container/diary/parts/preview.dart';
 
-class DiaryEditor extends StatelessWidget {
-  const DiaryEditor({super.key});
+class DiaryEditorComponent extends StatelessWidget {
+  const DiaryEditorComponent({super.key, required this.save});
+
+  final Function() save;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +33,8 @@ class DiaryEditor extends StatelessWidget {
             TextButton(
               child: const Text("保存", style: nabButtonTextStyle),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const DiaryEditor();
-                    },
-                  ),
-                );
+                save();
+                Navigator.of(context).pop();
               },
             ),
           ],

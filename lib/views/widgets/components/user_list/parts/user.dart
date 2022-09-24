@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:man_memo_v2/views/widgets/container/user_detail/page.dart';
 
 import '../../../../models/user.dart';
-import '../../../../pages/user_detail.dart';
+import '../page.dart';
 
-class UserWidget extends StatelessWidget {
-  const UserWidget(this.user, {super.key});
+class UserWidgetComponent extends StatelessWidget {
+  const UserWidgetComponent({
+    super.key,
+    required this.user,
+    required this.open,
+  });
+
   final UserModel user;
+  final Function(UserModel) open;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +30,7 @@ class UserWidget extends StatelessWidget {
             icon: Icons.delete,
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
-            onPressed: (BuildContext context) {
-              print("onDismissed");
-            },
+            onPressed: (BuildContext context) {},
           ),
         ],
       ),
@@ -38,12 +43,10 @@ class UserWidget extends StatelessWidget {
           ),
           title: Text(user.name),
           onTap: () {
-            Navigator.push(
-              context,
+            open(user);
+            Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) {
-                  return UserDetailScreen(user);
-                },
+                builder: (builder) => const UserDetailPageContainer(),
               ),
             );
           },

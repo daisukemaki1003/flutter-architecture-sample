@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../presentation/provider/diary/diary_state.dart';
-import '../../../component/diary_editor/parts/preview.dart';
+import '../../../components/diary_editor/parts/preview.dart';
 
 class PreviewWidgetContainer extends StatelessWidget {
   const PreviewWidgetContainer({Key? key}) : super(key: key);

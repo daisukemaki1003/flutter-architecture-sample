@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/presentation/provider/diary/diary_state.dart';
 
-import '../../../component/diary_editor/parts/editor.dart';
+import '../../../components/diary_editor/parts/editor.dart';
 
 class EditorWidgetContainer extends ConsumerWidget {
   const EditorWidgetContainer({Key? key}) : super(key: key);

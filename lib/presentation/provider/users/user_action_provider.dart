@@ -25,7 +25,7 @@ class UserActions {
   Future<void> add(String name) async {
     ref.read(userListNotifierProvider.notifier).add(name);
     // await ref.read(userListNotifierProvider.notifier).add(name);
-    final newUser = ref.read(userListNotifierProvider).value!.last;
+    final newUser = ref.read(userListNotifierProvider).value!.users.last;
     await userAddPresenter.handle(newUser);
   }
 
@@ -42,5 +42,9 @@ class UserActions {
   /// 検索結果クリア
   Future<void> searchResultsClear() async {
     await ref.read(userSearchNotifierProvider.notifier).clear();
+  }
+
+  open(UserModel user) {
+    ref.read(userListNotifierProvider.notifier).open(user);
   }
 }
