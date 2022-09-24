@@ -6,7 +6,7 @@ class DiariesRepositoryImpl implements DiariesRepository {
   DiaryDataSource diaryDatasource = DiaryDataSource();
 
   @override
-  List<DiaryData> fetchDiaryList() {
-    return diaryDatasource.fetchDiaryList();
+  List<DiaryData> getDiaryList() {
+    return diaryDatasource.getDiaryList();
   }
 }

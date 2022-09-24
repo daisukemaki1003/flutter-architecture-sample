@@ -1,3 +1,3 @@
 abstract class DiariesRepository {
-  fetchDiaryList();
+  getDiaryList();
 }

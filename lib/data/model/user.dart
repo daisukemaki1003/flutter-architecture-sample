@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-
 class UserData {
   final String userId; // User id
   final DateTime createdAt; // 作成日
