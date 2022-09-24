@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/pages/user_list.dart';
 
-import 'presentation/pages/calendar/calendar.dart';
-import 'presentation/pages/diary_list.dart';
-import 'presentation/pages/setting_page.dart';
+import 'views/pages/calendar/calendar.dart';
+import 'views/widgets/container/diary_list/page.dart';
+import 'views/widgets/container/user_list/page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -35,10 +34,10 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final _screens = [
-    const HomeScreen(),
-    const DiaryListScreen(),
+    const UserListPageContainer(),
+    const DiaryListPageContainer(),
     const CalendarPage(),
-    const SettingPage(),
+    const CalendarPage(),
   ];
 
   int _selectedIndex = 0;

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-import '../../model/meeting.dart';
+import '../../models/meeting.dart';
 import 'calendar_model.dart';
 
 class CalendarPage extends ConsumerWidget {

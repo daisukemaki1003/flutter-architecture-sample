@@ -1,7 +1,7 @@
 import '../../../domain/stubs/users/user_add_interactor.dart';
 import '../../../domain/usecases/users/add/user_add_input.dart';
 import '../../../domain/usecases/users/add/user_add_usecase.dart';
-import '../../model/user.dart';
+import '../../../views/models/user.dart';
 
 class UserAddPresenter {
   final UserAddUseCase _usecase = UserAddInteractor();

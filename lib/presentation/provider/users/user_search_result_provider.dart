@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../model/user.dart';
+import '../../../views/models/user.dart';
 import 'user_list_provider.dart';
 
 ///
@@ -11,14 +11,14 @@ import 'user_list_provider.dart';
 ///
 
 /// ユーザー検索プロバイダー
-final usersSearchNotifierProvider =
-    StateNotifierProvider<UsersSearchNotifier, AsyncValue<List<UserModel>>>(
-  (ref) => UsersSearchNotifier(ref)..initialize(),
+final userSearchNotifierProvider =
+    StateNotifierProvider<UserSearchNotifier, AsyncValue<List<UserModel>>>(
+  (ref) => UserSearchNotifier(ref)..initialize(),
 );
 
 /// State 管理
-class UsersSearchNotifier extends StateNotifier<AsyncValue<List<UserModel>>> {
-  UsersSearchNotifier(this.ref)
+class UserSearchNotifier extends StateNotifier<AsyncValue<List<UserModel>>> {
+  UserSearchNotifier(this.ref)
       : super(const AsyncValue<List<UserModel>>.loading());
 
   final Ref ref;
@@ -36,7 +36,7 @@ class UsersSearchNotifier extends StateNotifier<AsyncValue<List<UserModel>>> {
       return;
     }
 
-    final users = ref.watch(usersNotifierProvider);
+    final users = ref.watch(userListNotifierProvider);
     users.map(
       error: (_) => print('On Error'),
       loading: (_) => print("load"),
