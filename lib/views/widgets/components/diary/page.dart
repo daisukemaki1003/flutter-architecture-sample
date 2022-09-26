@@ -70,7 +70,7 @@ class DiaryPageComponent extends StatelessWidget {
           Padding(
             padding: internalPaddingInset,
             child: MarkdownBodyContainer(
-              markdownSource: diary.body,
+              markdownSource: diary.content,
               onCopyRequested: ((p0) {}),
             ),
           )

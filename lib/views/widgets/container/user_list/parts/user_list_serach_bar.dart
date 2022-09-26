@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../presentation/provider/users/user_action_provider.dart';
-import '../../../../../presentation/provider/users/user_search_result_provider.dart';
+import '../../../../provider/users/user_action_provider.dart';
+import '../../../../provider/users/user_search_result_provider.dart';
 import '../../../components/user_list/parts/user_list_serach_bar.dart';
 
 class SerachBarContainer extends ConsumerWidget {

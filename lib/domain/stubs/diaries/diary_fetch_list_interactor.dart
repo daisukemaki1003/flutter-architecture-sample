@@ -33,6 +33,6 @@ class DiaryFetchListInteractor implements DiaryFetchListUseCase {
 
   /// Transformer
   UserEntity translateUserEntity(UserData userData) {
-    return UserEntity(userData.createdAt, userData.name);
+    return UserEntity(userData.userId, userData.createdAt, userData.name);
   }
 }

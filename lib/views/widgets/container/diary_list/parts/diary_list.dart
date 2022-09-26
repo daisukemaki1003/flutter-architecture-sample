@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/views/models/user.dart';
 
-import '../../../../../presentation/provider/diary/diary_state.dart';
+import '../../../../provider/diary/diary_state.dart';
 import '../../../../models/diary.dart';
 import '../../../components/diary_list/parts/diary_list.dart';
 
@@ -27,7 +27,7 @@ class DiaryListContainer extends ConsumerWidget {
         final List<Diary> diaries = [];
         for (var lDiary in data.value.diaries) {
           for (var lUser in lDiary.users) {
-            if (user!.name == lUser.name) {
+            if (user!.userId == lUser.userId) {
               diaries.add(lDiary);
             }
           }

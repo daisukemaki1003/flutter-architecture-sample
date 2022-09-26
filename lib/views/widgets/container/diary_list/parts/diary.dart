@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/provider/diary/diary_action.dart';
+import 'package:man_memo_v2/views/provider/diary/diary_action.dart';
 
 import '../../../../models/diary.dart';
 import '../../../components/diary_list/parts/diary.dart';
@@ -14,6 +14,7 @@ class DiaryContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final diaryActions = ref.watch(diaryActionsProvider);
+
     tap() {
       Navigator.push(
         context,

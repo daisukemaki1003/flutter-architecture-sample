@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../views/models/user.dart';
-import '../../../views/models/user_detail.dart';
-import '../../presenter/users/user_add_presenter.dart';
-import '../../presenter/users/user_get_detail_presenter.dart';
+import '../../models/user.dart';
+import '../../models/user_detail.dart';
+import '../../../presenter/users/user_add_presenter.dart';
+import '../../../presenter/users/user_get_detail_presenter.dart';
 import 'user_list_provider.dart';
 import 'user_search_result_provider.dart';
 
@@ -24,7 +23,6 @@ class UserActions {
   /// ユーザー追加
   Future<void> add(String name) async {
     ref.read(userListNotifierProvider.notifier).add(name);
-    // await ref.read(userListNotifierProvider.notifier).add(name);
     final newUser = ref.read(userListNotifierProvider).value!.users.last;
     await userAddPresenter.handle(newUser);
   }

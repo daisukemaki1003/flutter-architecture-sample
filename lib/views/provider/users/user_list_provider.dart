@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../views/models/user.dart';
-import '../../presenter/users/user_get_list_presenter.dart';
+import '../../models/user.dart';
+import '../../../presenter/users/user_get_list_presenter.dart';
 
 final userStateProvider = StateProvider.autoDispose<UserModel?>((ref) {
   return ref.watch(userListNotifierProvider).value?.user;
@@ -31,7 +31,7 @@ class UserListNotifier extends StateNotifier<AsyncValue<UserViewModel>> {
   void add(String name) async {
     final data = state.value;
     if (data == null) return;
-    final newUser = UserModel(name, "", DateTime.now());
+    final newUser = UserModel("1", name, "", DateTime.now());
     state = AsyncValue.data(UserViewModel([...data.users, newUser]));
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/provider/users/user_list_provider.dart';
+import 'package:man_memo_v2/views/provider/users/user_list_provider.dart';
 import 'package:man_memo_v2/views/widgets/components/user_detail/page.dart';
 
 class UserDetailPageContainer extends ConsumerWidget {

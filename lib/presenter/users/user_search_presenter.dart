@@ -2,7 +2,7 @@ import 'package:man_memo_v2/domain/stubs/users/user_search_interactor.dart';
 import 'package:man_memo_v2/domain/usecases/users/search/user_search_input.dart';
 import 'package:man_memo_v2/domain/usecases/users/search/user_search_usecase.dart';
 
-import '../../../views/models/user.dart';
+import '../../views/models/user.dart';
 import '../transformer.dart';
 
 class UserSearchPresenter {

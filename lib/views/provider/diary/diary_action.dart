@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/views/models/diary.dart';
-import 'package:man_memo_v2/views/models/user.dart';
 
 import 'diary_state.dart';
 
@@ -15,8 +14,8 @@ class DiaryActions {
   /// Presenter
   /// Domain層へのアクセス
 
-  Future<void> save(Diary diary) async {
-    await ref.read(diariesNotifierProvider.notifier).save(diary);
+  void save(Diary diary) {
+    ref.read(diariesNotifierProvider.notifier).save(diary);
   }
 
   void open(Diary diary) {

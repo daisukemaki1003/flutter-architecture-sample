@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/provider/diary/diary_state.dart';
 
+import '../../../../provider/diary/diary_state.dart';
 import '../../../components/diary_editor/parts/editor.dart';
 
 class EditorWidgetContainer extends ConsumerWidget {
@@ -10,15 +10,16 @@ class EditorWidgetContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final diary = ref.watch(diaryStateProvider);
-    onTextChange(String value) {
+
+    onContentChange(String value) {
       if (diary != null) {
-        diary.body = value;
+        diary.content = value;
       }
     }
 
     return EditorWidget(
-      content: diary?.body,
-      onContentChanged: onTextChange,
+      content: diary!.content,
+      onContentChanged: onContentChange,
     );
   }
 }

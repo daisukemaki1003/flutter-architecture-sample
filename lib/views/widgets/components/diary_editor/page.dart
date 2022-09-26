@@ -32,8 +32,9 @@ class DiaryEditorComponent extends StatelessWidget {
           actions: [
             TextButton(
               child: const Text("保存", style: nabButtonTextStyle),
-              onPressed: () {
-                save();
+              onPressed: () async {
+                await save();
+                await Future.delayed(const Duration(seconds: 1));
                 Navigator.of(context).pop();
               },
             ),

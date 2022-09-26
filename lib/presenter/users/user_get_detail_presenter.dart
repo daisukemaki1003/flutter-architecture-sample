@@ -1,8 +1,8 @@
-import '../../../domain/stubs/users/user_get_detail_interactor.dart';
-import '../../../domain/usecases/users/get_detail/user_get_detail_input.dart';
-import '../../../domain/usecases/users/get_detail/user_get_detail_usecase.dart';
-import '../../../views/models/user.dart';
-import '../../../views/models/user_detail.dart';
+import '../../domain/stubs/users/user_get_detail_interactor.dart';
+import '../../domain/usecases/users/get_detail/user_get_detail_input.dart';
+import '../../domain/usecases/users/get_detail/user_get_detail_usecase.dart';
+import '../../views/models/user.dart';
+import '../../views/models/user_detail.dart';
 import '../transformer.dart';
 
 class UserGetDetailPresenter {

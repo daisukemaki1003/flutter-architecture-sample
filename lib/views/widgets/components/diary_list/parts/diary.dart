@@ -16,6 +16,7 @@ class DiaryComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     const userIcon =
         "https://gws-ug.jp/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png";
+
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 140,
@@ -40,12 +41,13 @@ class DiaryComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "タイトル",
-                style: TextStyle(
+              Text(
+                diary.content,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
               Text(
                 DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),

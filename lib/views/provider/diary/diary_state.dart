@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../views/models/diary.dart';
-import '../../presenter/diarys/diary_get_list_presenter.dart';
+import '../../models/diary.dart';
+import '../../../presenter/diarys/diary_get_list_presenter.dart';
 
 final diaryStateProvider = StateProvider.autoDispose<Diary?>((ref) {
   return ref.watch(diariesNotifierProvider).value?.diary;
@@ -31,7 +31,7 @@ class DiariesNotifier extends StateNotifier<AsyncValue<DiaryViewModel>> {
     state.value?.diary = diary;
   }
 
-  Future<void> save(Diary diary) async {
+  void save(Diary diary) {
     final data = state.value;
     if (data == null) return;
     data.diary = diary;

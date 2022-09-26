@@ -20,6 +20,6 @@ class UserSearchInteractor implements UserSearchUseCase {
 
   /// Transformer
   UserEntity translate(UserData userData) {
-    return UserEntity(userData.createdAt, userData.name);
+    return UserEntity(userData.userId, userData.createdAt, userData.name);
   }
 }

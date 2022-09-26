@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/presentation/provider/users/user_list_provider.dart';
+import 'package:man_memo_v2/views/provider/users/user_list_provider.dart';
 import 'package:man_memo_v2/views/widgets/components/user_detail/parts/profile_widget.dart';
 
-import '../../../../../presentation/provider/users/user_action_provider.dart';
+import '../../../../provider/users/user_action_provider.dart';
 import '../../../../models/user_detail.dart';
 
 class ProfileWidgetContainer extends ConsumerWidget {

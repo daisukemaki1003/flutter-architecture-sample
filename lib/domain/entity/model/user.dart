@@ -1,12 +1,12 @@
 class UserEntity {
-  String? uid;
+  String userId;
   DateTime createdAt;
 
   final String name;
   String? iconPath;
 
   UserEntity(
-    // this.uid,
+    this.userId,
     this.createdAt,
     this.name,
   );

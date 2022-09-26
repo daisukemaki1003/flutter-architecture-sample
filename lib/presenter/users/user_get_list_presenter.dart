@@ -1,7 +1,7 @@
-import '../../../domain/stubs/users/user_get_list_interactor.dart';
-import '../../../domain/usecases/users/get_list/user_get_list_input.dart';
-import '../../../domain/usecases/users/get_list/user_get_list_usecase.dart';
-import '../../../views/models/user.dart';
+import '../../domain/stubs/users/user_get_list_interactor.dart';
+import '../../domain/usecases/users/get_list/user_get_list_input.dart';
+import '../../domain/usecases/users/get_list/user_get_list_usecase.dart';
+import '../../views/models/user.dart';
 import '../transformer.dart';
 
 class UserGetListPresenter {

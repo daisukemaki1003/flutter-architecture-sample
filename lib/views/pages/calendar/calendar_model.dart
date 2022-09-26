@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/views/models/meeting.dart';
-import 'package:man_memo_v2/presentation/provider/meetings.provider.dart';
+import 'package:man_memo_v2/views/provider/meetings.provider.dart';
 
 class CalendarViewModel {
   List<MeetingModel> meetings;

@@ -29,6 +29,6 @@ class UserGetDetailInteractor implements UserGetDetailUseCase {
 
   /// Transformer
   UserEntity translateUserEntity(UserData userData) {
-    return UserEntity(userData.createdAt, userData.name);
+    return UserEntity(userData.userId, userData.createdAt, userData.name);
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/views/widgets/components/user_list/parts/user_list.dart';
 
-import '../../../../../presentation/provider/users/user_action_provider.dart';
-import '../../../../../presentation/provider/users/user_list_provider.dart';
+import '../../../../provider/users/user_action_provider.dart';
+import '../../../../provider/users/user_list_provider.dart';
 
 class UserListContainer extends ConsumerWidget {
   const UserListContainer({super.key});

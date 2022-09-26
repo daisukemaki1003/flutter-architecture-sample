@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../presentation/provider/users/user_list_provider.dart';
+import '../../../../provider/users/user_list_provider.dart';
 import '../../../components/user_detail/parts/profile_bar.dart';
 
 class ProfileBarContainer extends ConsumerWidget {

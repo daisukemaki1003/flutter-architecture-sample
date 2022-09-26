@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../views/models/user.dart';
+import '../../models/user.dart';
 import 'user_list_provider.dart';
 
 ///
