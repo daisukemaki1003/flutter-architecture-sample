@@ -38,7 +38,9 @@ class Transformer {
     final diaryList = Diary(
       createdAt: diaryEntity.createdAt,
       users: diaryEntity.users.map((e) => userEntityToUserModel(e)).toList(),
-      content: diaryEntity.title + diaryEntity.body,
+      // content: diaryEntity.title + diaryEntity.body,
+      title: diaryEntity.title,
+      body: diaryEntity.body,
     );
     return diaryList;
   }

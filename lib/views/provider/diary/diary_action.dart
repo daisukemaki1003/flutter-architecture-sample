@@ -14,8 +14,8 @@ class DiaryActions {
   /// Presenter
   /// Domain層へのアクセス
 
-  void save(Diary diary) {
-    ref.read(diariesNotifierProvider.notifier).save(diary);
+  void save(String content) async {
+    await ref.read(diariesNotifierProvider.notifier).save(content);
   }
 
   void open(Diary diary) {

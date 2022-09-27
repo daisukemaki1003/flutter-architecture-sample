@@ -1,6 +1,6 @@
 class UserEntity {
-  String userId;
-  DateTime createdAt;
+  final String userId;
+  final DateTime createdAt;
 
   final String name;
   String? iconPath;

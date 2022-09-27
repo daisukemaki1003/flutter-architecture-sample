@@ -9,16 +9,15 @@ class EditorWidgetContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final diary = ref.watch(diaryStateProvider);
+    var diary = ref.watch(diaryStateProvider.state);
+    print(diary);
 
     onContentChange(String value) {
-      if (diary != null) {
-        diary.content = value;
-      }
+      diary.state = value;
     }
 
     return EditorWidget(
-      content: diary!.content,
+      content: diary.state,
       onContentChanged: onContentChange,
     );
   }

@@ -10,8 +10,14 @@ class DiaryPageContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Consumer(builder: (context, ref, _) {
-      final diary = ref.watch(diaryStateProvider);
-      return DiaryPageComponent(diary: diary!);
+      final diaries = ref.watch(diariesNotifierProvider);
+      return diaries.map(
+        error: (_) => const Text('On Error'),
+        loading: (_) => const Center(child: CircularProgressIndicator()),
+        data: (data) {
+          return DiaryPageComponent(diary: data.value.diary!);
+        },
+      );
     });
   }
 }

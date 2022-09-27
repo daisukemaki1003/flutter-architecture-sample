@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/diary.dart';
+import 'user_icon_list.dart';
 
 class DiaryComponent extends StatelessWidget {
   const DiaryComponent(
@@ -42,37 +43,19 @@ class DiaryComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                diary.content,
+                // diary.content,
+                diary.title,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
                 DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),
               ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: diary.users.length,
-                  itemBuilder: (context, index) {
-                    final user = diary.users[index];
-
-                    return const Padding(
-                      padding: EdgeInsets.only(right: 10, top: 10),
-                      child: CircleAvatar(
-                        radius: 23,
-                        backgroundImage: NetworkImage(userIcon),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              )
+              UserIconListWidget(diary.users),
             ],
           ),
         ),

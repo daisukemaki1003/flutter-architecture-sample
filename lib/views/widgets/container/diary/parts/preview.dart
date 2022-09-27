@@ -11,7 +11,8 @@ class PreviewWidgetContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, _) {
       final diary = ref.watch(diaryStateProvider);
-      return PreviewWidget(diary!.content);
+      print(diary);
+      return PreviewWidget(diary);
     });
   }
 }

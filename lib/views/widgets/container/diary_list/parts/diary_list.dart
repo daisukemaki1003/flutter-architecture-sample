@@ -15,8 +15,8 @@ class DiaryListContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final diaryList = ref.watch(diariesNotifierProvider);
-    return diaryList.map(
+    final diaries = ref.watch(diariesNotifierProvider);
+    return diaries.map(
       error: (_) => const Text('On Error'),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       data: (data) {
@@ -29,6 +29,7 @@ class DiaryListContainer extends ConsumerWidget {
           for (var lUser in lDiary.users) {
             if (user!.userId == lUser.userId) {
               diaries.add(lDiary);
+              break;
             }
           }
         }

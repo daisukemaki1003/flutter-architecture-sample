@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../container/user_editor/page.dart';
+
 class EditButtonComponent extends StatelessWidget {
   const EditButtonComponent({super.key});
 
@@ -20,6 +22,11 @@ class EditButtonComponent extends StatelessWidget {
         ),
         onPressed: () {
           /// 編集画面へ
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (builder) => const UserEditorPageContainer(),
+            ),
+          );
         },
       ),
     );

@@ -12,14 +12,11 @@ class DiaryEditorContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final diary = ref.watch(diaryStateProvider);
-    // final controller = TextEditingController(text: diary.title + diary.body);
     final diaryActions = ref.watch(diaryActionsProvider);
 
     save() async {
-      if (diary != null) {
-        print(diary.content);
-        diaryActions.save(diary);
-      }
+      print(diary);
+      diaryActions.save(diary);
     }
 
     return Consumer(builder: (context, ref, _) {

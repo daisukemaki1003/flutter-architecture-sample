@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/diary.dart';
 import '../../../presenter/diarys/diary_get_list_presenter.dart';
 
-final diaryStateProvider = StateProvider.autoDispose<Diary?>((ref) {
-  return ref.watch(diariesNotifierProvider).value?.diary;
+final diaryStateProvider = StateProvider.autoDispose<String>((ref) {
+  // return ref.watch(diariesNotifierProvider).value?.diary;
+  final diary = ref.watch(diariesNotifierProvider).value?.diary;
+  return diary!.title + diary.body;
 });
 
 /// プロバイダー
@@ -31,10 +33,16 @@ class DiariesNotifier extends StateNotifier<AsyncValue<DiaryViewModel>> {
     state.value?.diary = diary;
   }
 
-  void save(Diary diary) {
+  // save(Diary diary) async {
+  //   final data = state.value;
+  //   if (data == null) return;
+  //   data.diary = diary;
+  //   state = AsyncValue.data(data);
+  // }
+  save(String content) async {
     final data = state.value;
     if (data == null) return;
-    data.diary = diary;
+    data.diary!.setContent(content);
     state = AsyncValue.data(data);
   }
 }

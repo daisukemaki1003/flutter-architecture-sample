@@ -2,10 +2,12 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:man_memo_v2/views/widgets/container/diary/parts/preview.dart';
 
 import '../../../models/diary.dart';
 import '../../container/diary_editor/page.dart';
 import '../diary_editor/parts/markdown_body.dart';
+import '../diary_list/parts/user_icon_list.dart';
 
 class DiaryPageComponent extends StatelessWidget {
   const DiaryPageComponent({
@@ -28,18 +30,10 @@ class DiaryPageComponent extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: defaltColor,
         elevation: 0,
-        leadingWidth: 500,
-        leading: OverflowBox(
-          maxWidth: 500,
-          child: ElevatedButton.icon(
-            icon: backButtonIcon,
-            label: const Text("日記一覧へ", style: nabButtonTextStyle),
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              backgroundColor: defaltColor,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: Text(
+          DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),
+          style: nabButtonTextStyle,
         ),
         actions: [
           TextButton(
@@ -61,19 +55,15 @@ class DiaryPageComponent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 5),
-          Center(
-            child: Text(
-              DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
+            child: SizedBox(
+              height: 50,
+              width: double.infinity,
+              child: UserIconListWidget(diary.users),
             ),
           ),
-          Padding(
-            padding: internalPaddingInset,
-            child: MarkdownBodyContainer(
-              markdownSource: diary.content,
-              onCopyRequested: ((p0) {}),
-            ),
-          )
+          const PreviewWidgetContainer(),
         ],
       ),
     );
