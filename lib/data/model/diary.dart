@@ -1,8 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:man_memo_v2/data/model/user.dart';
 
 class DiaryData {
   DateTime createdAt;
-  List<String> names;
+  List<UserData> users;
+  String title;
   String body;
-  DiaryData(this.createdAt, this.names, this.body);
+  DiaryData(
+    this.createdAt,
+    this.users,
+    this.title,
+    this.body,
+  );
 }
