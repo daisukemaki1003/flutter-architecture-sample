@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'views/pages/calendar/calendar.dart';
-import 'views/widgets/container/diary_list/page.dart';
-import 'views/widgets/container/user_list/page.dart';
+import 'presentation/widgets/containers/diary_list/page.dart';
+import 'presentation/widgets/containers/user_list/page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'マンメモ',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -36,8 +35,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final _screens = [
     const UserListPageContainer(),
     const DiaryListPageContainer(),
-    const CalendarPage(),
-    const CalendarPage(),
+    const DiaryListPageContainer(),
+    const DiaryListPageContainer(),
   ];
 
   int _selectedIndex = 0;

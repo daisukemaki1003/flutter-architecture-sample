@@ -11,4 +11,14 @@ class DiaryEntity {
     this.title,
     this.body,
   );
+
+  setContent(String text) {
+    int index = text.indexOf("\n");
+    if (index < 0) {
+      title = text;
+    } else {
+      title = text.substring(0, index);
+      body = text.substring(index, text.length);
+    }
+  }
 }
