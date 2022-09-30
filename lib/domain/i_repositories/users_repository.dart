@@ -1,6 +1,6 @@
-import 'package:man_memo_v2/data/model/user_detail.dart';
+import 'package:man_memo_v2/infrastructure/model/user_detail.dart';
 
-import '../../data/model/user.dart';
+import '../../infrastructure/model/user.dart';
 
 abstract class UsersRepository {
   add(String name);

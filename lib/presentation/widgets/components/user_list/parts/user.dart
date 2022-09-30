@@ -4,14 +4,9 @@ import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'package:man_memo_v2/presentation/widgets/containers/user_detail/page.dart';
 
 class UserWidgetComponent extends StatelessWidget {
-  const UserWidgetComponent({
-    super.key,
-    required this.user,
-    required this.open,
-  });
+  const UserWidgetComponent(this.user, {super.key});
 
   final UserEntity user;
-  final Function(UserEntity) open;
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +36,9 @@ class UserWidgetComponent extends StatelessWidget {
           ),
           title: Text(user.name),
           onTap: () {
-            open(user);
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (builder) => const UserDetailPageContainer(),
+                builder: (builder) => UserDetailPageContainer(user),
               ),
             );
           },

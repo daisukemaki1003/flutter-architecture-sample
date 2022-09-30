@@ -4,14 +4,9 @@ import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'user.dart';
 
 class UserListComponent extends StatelessWidget {
-  const UserListComponent({
-    super.key,
-    required this.users,
-    required this.open,
-  });
+  const UserListComponent(this.users, {super.key});
 
   final List<UserEntity> users;
-  final Function(UserEntity) open;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,7 @@ class UserListComponent extends StatelessWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             final user = users[index];
-            return UserWidgetComponent(user: user, open: open);
+            return UserWidgetComponent(user);
           },
         ),
       ],

@@ -1,5 +1,5 @@
-import '../../../data/model/user.dart';
-import '../../../data/repositories/users_repository.dart';
+import '../../../infrastructure/model/user.dart';
+import '../../../infrastructure/repositories/users_repository.dart';
 import '../../entity/model/user.dart';
 import '../../i_repositories/users_repository.dart';
 
@@ -8,7 +8,9 @@ import '../../usecases/users/get_list/user_get_list_output.dart';
 import '../../usecases/users/get_list/user_get_list_usecase.dart';
 
 class UserGetListInteractor implements UserGetListUseCase {
-  UsersRepository usersRepository = UsersRepositoryImpl();
+  final UsersRepository usersRepository;
+
+  UserGetListInteractor(this.usersRepository);
 
   @override
   handle(UserGetListInput input) {

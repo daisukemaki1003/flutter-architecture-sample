@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:man_memo_v2/domain/entity/model/user_detail.dart';
 
 class ProfileWidgetComponent extends StatelessWidget {
-  const ProfileWidgetComponent({super.key, required this.user});
+  const ProfileWidgetComponent(this.user, {super.key});
 
   final UserDetailEntity user;
 

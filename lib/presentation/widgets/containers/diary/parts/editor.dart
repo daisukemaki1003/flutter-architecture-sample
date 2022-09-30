@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../presenter/diarys/diary_update_presenter.dart';
+import '../../../../presenters/diarys/diary_update_presenter.dart';
 import '../../../components/diary_editor/parts/editor.dart';
 
 class EditorWidgetContainer extends ConsumerWidget {

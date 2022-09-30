@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../presenter/users/user_add_presenter.dart';
+import '../../../../view_models/users.dart';
 import '../../../components/user_list/parts/user_add_button.dart';
 
 class UserAddButtonContainer extends ConsumerWidget {
@@ -9,9 +9,9 @@ class UserAddButtonContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userAddPresenter =
-        ref.watch(userAddPresenterNotifierProvider.notifier);
+    final usersViewModelNotifier =
+        ref.watch(usersViewModelNotifierProvider.notifier);
 
-    return UserAddButtonComponent(userAddPresenter.handle);
+    return UserAddButtonComponent(usersViewModelNotifier.add);
   }
 }

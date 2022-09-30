@@ -9,7 +9,7 @@ class SerachBarComponent extends StatelessWidget {
     required this.searchResultWidget,
   });
 
-  final Function() search;
+  final Function(String keyword) search;
   final Function() searchResultClear;
   final Widget searchResultWidget;
 
@@ -32,7 +32,7 @@ class SerachBarComponent extends StatelessWidget {
       width: isPortrait ? 600 : 500,
       debounceDelay: const Duration(milliseconds: 500),
       transition: CircularFloatingSearchBarTransition(),
-      onSubmitted: ((query) async => await search()),
+      onSubmitted: ((query) async => await search(query)),
       onFocusChanged: ((isFocused) => searchResultClear),
       actions: const [],
       builder: (context, transition) {

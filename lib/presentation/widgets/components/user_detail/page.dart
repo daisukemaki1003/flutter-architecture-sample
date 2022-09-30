@@ -34,7 +34,7 @@ class UserDetailPageComponent extends StatelessWidget {
                   ],
 
                   /// ユーザープロフィールBar
-                  flexibleSpace: const ProfileBarContainer(),
+                  flexibleSpace: ProfileBarContainer(user),
 
                   /// タブ
                   bottom: PreferredSize(
@@ -56,7 +56,7 @@ class UserDetailPageComponent extends StatelessWidget {
           body: TabBarView(
             children: [
               /// ユーザー詳細
-              const ProfileWidgetContainer(),
+              ProfileWidgetContainer(user),
 
               /// 日記一覧
               DiaryListContainer(user: user),

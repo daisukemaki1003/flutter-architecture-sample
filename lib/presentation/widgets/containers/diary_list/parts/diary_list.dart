@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/domain/entity/model/diary.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
-import '../../../../presenter/diarys/diary_get_list_presenter.dart';
+import '../../../../presenters/diarys/diary_get_list_presenter.dart';
 import '../../../components/diary_list/parts/diary_list.dart';
 
 class DiaryListContainer extends ConsumerWidget {

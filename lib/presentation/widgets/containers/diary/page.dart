@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../presenter/diarys/diary_update_presenter.dart';
+import '../../../presenters/diarys/diary_update_presenter.dart';
 import '../../components/diary/page.dart';
 
 class DiaryPageContainer extends ConsumerWidget {
@@ -10,7 +10,7 @@ class DiaryPageContainer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Consumer(builder: (context, ref, _) {
-      final diary = ref.watch(selectedDiaryProvider.notifier).state;
+      final diary = ref.watch(diaryUpdatePresenterNotifierProvider);
       return DiaryPageComponent(diary: diary!);
     });
   }

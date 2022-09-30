@@ -1,4 +1,4 @@
-import '../../data/model/meeting.dart';
+import '../../infrastructure/model/meeting.dart';
 
 abstract class MeetingsRepository {
   List<MeetingData> fetchMeetingList();

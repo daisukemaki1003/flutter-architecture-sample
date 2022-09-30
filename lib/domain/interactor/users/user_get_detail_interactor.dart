@@ -1,5 +1,4 @@
-import '../../../data/model/user.dart';
-import '../../../data/repositories/users_repository.dart';
+import '../../../infrastructure/model/user.dart';
 import '../../entity/model/user.dart';
 import '../../entity/model/user_detail.dart';
 import '../../i_repositories/users_repository.dart';
@@ -8,7 +7,9 @@ import '../../usecases/users/get_detail/user_get_detail_output.dart';
 import '../../usecases/users/get_detail/user_get_detail_usecase.dart';
 
 class UserGetDetailInteractor implements UserGetDetailUseCase {
-  UsersRepository usersRepository = UsersRepositoryImpl();
+  final UsersRepository usersRepository;
+
+  UserGetDetailInteractor(this.usersRepository);
 
   @override
   handle(UserGetDetailInput input) {
