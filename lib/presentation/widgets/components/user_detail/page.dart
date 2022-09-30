@@ -14,8 +14,9 @@ class UserDetailPageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: DefaultTabController(
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 200, 230, 255),
+      body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -26,7 +27,8 @@ class UserDetailPageComponent extends StatelessWidget {
                 sliver: SliverAppBar(
                   expandedHeight: 200 + kToolbarHeight,
                   floating: true,
-                  snap: true,
+                  snap: false,
+
                   // pinned: true,
                   actions: const [
                     /// ユーザー編集へ遷移

@@ -15,9 +15,6 @@ class DiaryComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const userIcon =
-        "https://gws-ug.jp/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png";
-
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 140,

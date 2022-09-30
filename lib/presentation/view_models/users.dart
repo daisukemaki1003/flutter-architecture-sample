@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
-import '../../domain/entity/model/user_detail.dart';
-import '../presenters/user_presenter.dart';
+import '../presenters/users_presenter.dart';
 import 'user_add_form.dart';
 
 ///

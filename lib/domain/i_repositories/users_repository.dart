@@ -1,5 +1,5 @@
 import 'package:man_memo_v2/domain/entity/model/user.dart';
-import 'package:man_memo_v2/infrastructure/model/user_detail.dart';
+import 'package:man_memo_v2/infrastructure/models/user_detail.dart';
 
 abstract class UsersRepository {
   Future<UserEntity> add(UserEntity user);

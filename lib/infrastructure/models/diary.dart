@@ -1,4 +1,4 @@
-import 'package:man_memo_v2/infrastructure/model/user.dart';
+import 'package:man_memo_v2/infrastructure/models/user.dart';
 
 class DiaryData {
   DateTime createdAt;
