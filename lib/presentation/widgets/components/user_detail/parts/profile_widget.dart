@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'package:man_memo_v2/domain/entity/model/user_detail.dart';
 
 class ProfileWidgetComponent extends StatelessWidget {
   const ProfileWidgetComponent(this.user, {super.key});
 
-  final UserDetailEntity user;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ProfileWidgetComponent extends StatelessWidget {
           _profileWidget(
             "基本情報",
             {
-              "名前": user.userBase.name,
+              "名前": user.name,
               "年齢": user.age.toString(),
               "誕生日": user.birthday,
               "出身地": user.birthplace,

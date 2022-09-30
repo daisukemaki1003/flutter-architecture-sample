@@ -1,8 +1,7 @@
-import 'package:man_memo_v2/domain/usecases/users/add/user_add_input.dart';
-import 'package:man_memo_v2/domain/usecases/users/add/user_add_output.dart';
+import 'package:man_memo_v2/domain/entity/model/user.dart';
 
 import '../../i_repositories/users_repository.dart';
-import '../../usecases/users/add/user_add_usecase.dart';
+import '../../usecases/users/user_add_usecase.dart';
 
 class UserAddInteractor implements UserAddUseCase {
   final UsersRepository usersRepository;
@@ -10,8 +9,18 @@ class UserAddInteractor implements UserAddUseCase {
   UserAddInteractor(this.usersRepository);
 
   @override
-  handle(UserAddInput input) {
-    usersRepository.add(input.name);
-    return UserAddOutput();
+  Future<UserEntity> handle(String name) async {
+    final user = UserEntity(
+        createdAt: DateTime.now(),
+        name: name,
+        icon: "icon",
+        age: 21,
+        birthday: "birthday",
+        birthplace: "birthplace",
+        residence: "residence",
+        holiday: 0,
+        occupation: "occupation",
+        memo: "memo");
+    return await usersRepository.add(user);
   }
 }

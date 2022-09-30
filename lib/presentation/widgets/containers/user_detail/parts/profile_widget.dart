@@ -11,22 +11,6 @@ class ProfileWidgetContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final usersViewModelNotifier =
-        ref.watch(usersViewModelNotifierProvider.notifier);
-
-    return FutureBuilder(
-        future: usersViewModelNotifier.getDetail(user),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ProfileWidgetComponent(snapshot.data!);
-          } else {
-            return Column(
-              children: const [
-                CircularProgressIndicator(),
-                Text('Awaiting result...'),
-              ],
-            );
-          }
-        });
+    return ProfileWidgetComponent(user);
   }
 }

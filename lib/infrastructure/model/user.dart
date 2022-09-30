@@ -1,14 +1,4 @@
-class UserData {
-  final String userId; // User id
-  final DateTime createdAt; // 作成日
-  final String name; // 名前
-
-  UserData({
-    required this.userId,
-    required this.createdAt,
-    required this.name,
-  });
-}
+import 'package:man_memo_v2/domain/entity/model/user.dart';
 
 const String tableUsers = 'users';
 
@@ -43,7 +33,7 @@ class UserFields {
 
 ///
 /// UserDBData
-class User {
+class UserData {
   final int? id; // User id
   final DateTime createdAt; // 作成日
   final String name; // 名前
@@ -57,7 +47,7 @@ class User {
   final String occupation; // 職業
   final String memo; // メモ
 
-  User({
+  UserData({
     this.id,
     required this.createdAt,
     required this.name,
@@ -71,7 +61,7 @@ class User {
     required this.memo,
   });
 
-  User copy({
+  UserData copy({
     int? id,
     DateTime? createdAt,
     String? name,
@@ -84,7 +74,7 @@ class User {
     String? occupation,
     String? memo,
   }) =>
-      User(
+      UserData(
         id: id ?? this.id,
         createdAt: createdAt ?? this.createdAt,
         name: name ?? this.name,
@@ -98,7 +88,7 @@ class User {
         memo: memo ?? this.memo,
       );
 
-  static User fromJson(Map<String, Object?> json) => User(
+  static UserData fromJson(Map<String, Object?> json) => UserData(
         id: json[UserFields.id] as int,
         createdAt: DateTime.parse(json[UserFields.createdAt] as String),
         name: json[UserFields.name] as String,
@@ -125,4 +115,30 @@ class User {
         UserFields.occupation: occupation,
         UserFields.memo: memo,
       };
+
+  static UserData fromEntity(UserEntity entity) => UserData(
+      id: entity.id,
+      createdAt: entity.createdAt,
+      name: entity.name,
+      icon: entity.icon,
+      age: entity.age,
+      birthday: entity.birthday,
+      birthplace: entity.birthplace,
+      residence: entity.residence,
+      holiday: entity.holiday,
+      occupation: entity.occupation,
+      memo: entity.memo);
+
+  UserEntity toEntity() => UserEntity(
+      id: id,
+      createdAt: createdAt,
+      name: name,
+      icon: icon,
+      age: age,
+      birthday: birthday,
+      birthplace: birthplace,
+      residence: residence,
+      holiday: holiday,
+      occupation: occupation,
+      memo: memo);
 }

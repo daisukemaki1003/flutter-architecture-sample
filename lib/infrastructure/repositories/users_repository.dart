@@ -1,52 +1,35 @@
+import 'package:man_memo_v2/domain/entity/model/user.dart';
+
 import '../../domain/i_repositories/users_repository.dart';
 import '../datasources/users_datasource.dart';
 import '../model/user.dart';
 
 class UsersRepositoryImpl implements UsersRepository {
-  final UsersDataSource testUsersDataSource;
   final UsersDatabase usersDatabase;
 
-  UsersRepositoryImpl(this.usersDatabase, this.testUsersDataSource);
+  UsersRepositoryImpl(this.usersDatabase);
 
   @override
-  void add(String name) async {
-    final user = User(
-      id: null,
-      createdAt: DateTime.now(),
-      name: name,
-      icon: "",
-      age: 0,
-      birthday: "birthday",
-      birthplace: "birthplace",
-      residence: "residence",
-      holiday: 0,
-      occupation: "occupation",
-      memo: "memo",
-    );
+  Future<UserEntity> add(UserEntity user) async {
+    final addedUser = await usersDatabase.create(UserData.fromEntity(user));
+    return addedUser.toEntity();
+  }
 
-    print("create");
-    usersDatabase.create(user);
-    print("readAllUsers");
+  @override
+  Future<UserEntity> get(int id) async {
+    final user = await usersDatabase.readUser(id);
+    return user.toEntity();
+  }
+
+  @override
+  Future<List<UserEntity>> getAll() async {
     final users = await usersDatabase.readAllUsers();
-    for (var item in users) {
-      print(item.name);
-    }
-
-    testUsersDataSource.add(name);
+    return users.map((e) => e.toEntity()).toList();
   }
 
   @override
-  List<UserData> getList() {
-    return testUsersDataSource.fetchList();
-  }
-
-  @override
-  List<UserData> search(String searchText) {
-    return testUsersDataSource.search(searchText);
-  }
-
-  @override
-  getDetail(String uid) {
-    return testUsersDataSource.getDetail();
+  Future<List<UserEntity>> search(String searchText) async {
+    final users = await usersDatabase.readAllUsers();
+    return users.map((e) => e.toEntity()).toList();
   }
 }

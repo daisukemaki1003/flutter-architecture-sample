@@ -28,7 +28,7 @@ class DiaryListContainer extends ConsumerWidget {
         final List<DiaryEntity> diaries = [];
         for (var lDiary in data.value) {
           for (var lUser in lDiary.users) {
-            if (user!.userId == lUser.userId) {
+            if (user!.id == lUser.id) {
               diaries.add(lDiary);
               break;
             }

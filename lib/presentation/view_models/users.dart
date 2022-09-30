@@ -48,10 +48,6 @@ class UsersViewModelNotifier extends StateNotifier<AsyncValue<UsersViewModel>> {
     state = AsyncValue.data(data);
   }
 
-  Future<UserDetailEntity> getDetail(UserEntity user) async {
-    return await userPresenter.getDetail(user);
-  }
-
   search(String keyword) async {
     final data = state.value;
     if (data == null) return;

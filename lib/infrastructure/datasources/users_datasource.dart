@@ -1,67 +1,8 @@
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
-import 'package:man_memo_v2/infrastructure/model/user_detail.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../model/user.dart';
-
-class UsersDataSource {
-  static final UsersDataSource _instance = UsersDataSource._internal();
-
-  factory UsersDataSource() {
-    return _instance;
-  }
-
-  UsersDataSource._internal();
-
-  final List<UserData> _users = [
-    UserData(name: "test0", userId: "0", createdAt: DateTime.now()),
-    UserData(name: "test2", userId: "1", createdAt: DateTime.now()),
-    UserData(name: "test1", userId: "2", createdAt: DateTime.now()),
-    UserData(name: "test3", userId: "3", createdAt: DateTime.now()),
-  ];
-
-  /// 追加
-  add(String name) async {
-    _users.add(UserData(name: name, userId: "3", createdAt: DateTime.now()));
-  }
-
-  /// ユーザーリストを取得
-  List<UserData> fetchList() {
-    return _users;
-  }
-
-  /// 検索
-  List<UserData> search(String searchText) {
-    List<UserData> users = [];
-
-    for (var user in _users) {
-      if (user.name.contains(searchText)) users.add(user);
-    }
-
-    return users;
-  }
-
-  /// 詳細データ取得
-  UserDetailData getDetail() {
-    UserData userData = UserData(
-      name: "test0",
-      userId: "0",
-      createdAt: DateTime.now(),
-    );
-
-    return UserDetailData(
-      user: userData,
-      age: 20,
-      birthday: "birthday",
-      birthplace: "birthplace",
-      residence: "residence",
-      holiday: 10,
-      occupation: "occupation",
-      memo: "memo",
-    );
-  }
-}
 
 class UsersDatabase {
   static final UsersDatabase instance = UsersDatabase._init();
@@ -107,14 +48,14 @@ CREATE TABLE $tableUsers (
 ''');
   }
 
-  Future<User> create(User user) async {
+  Future<UserData> create(UserData user) async {
     final db = await instance.database;
 
     final id = await db.insert(tableUsers, user.toJson());
     return user.copy(id: id);
   }
 
-  Future<User> readUser(int id) async {
+  Future<UserData> readUser(int id) async {
     final db = await instance.database;
 
     final maps = await db.query(
@@ -125,22 +66,22 @@ CREATE TABLE $tableUsers (
     );
 
     if (maps.isNotEmpty) {
-      return User.fromJson(maps.first);
+      return UserData.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
   }
 
-  Future<List<User>> readAllUsers() async {
+  Future<List<UserData>> readAllUsers() async {
     final db = await instance.database;
 
     const orderBy = '${UserFields.createdAt} ASC';
     final result = await db.query(tableUsers, orderBy: orderBy);
 
-    return result.map((json) => User.fromJson(json)).toList();
+    return result.map((json) => UserData.fromJson(json)).toList();
   }
 
-  Future<int> update(User user) async {
+  Future<int> update(UserData user) async {
     final db = await instance.database;
 
     return db.update(

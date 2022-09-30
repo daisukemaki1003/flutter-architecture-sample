@@ -13,25 +13,7 @@ class DiaryGetListInteractor implements DiaryGetListUseCase {
   DiariesRepository diaryRepository = DiariesRepositoryImpl();
 
   @override
-  DiaryGetListOutput handle(DiaryGetListInput input) {
-    List<DiaryData> diaryDataList = diaryRepository.getDiaryList();
-    List<DiaryEntity> diaryEntityList =
-        diaryDataList.map((diary) => translate(diary)).toList();
-    return DiaryGetListOutput(diaryEntityList);
-  }
-
-  /// Transformer
-  DiaryEntity translate(DiaryData diary) {
-    return DiaryEntity(
-      diary.createdAt,
-      diary.users.map((e) => translateUserEntity(e)).toList(),
-      "",
-      diary.body,
-    );
-  }
-
-  /// Transformer
-  UserEntity translateUserEntity(UserData userData) {
-    return UserEntity(userData.userId, userData.createdAt, userData.name);
+  handle(DiaryGetListInput input) async {
+    return DiaryGetListOutput([]);
   }
 }

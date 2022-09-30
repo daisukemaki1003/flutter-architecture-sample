@@ -2,12 +2,12 @@ import 'package:man_memo_v2/infrastructure/model/user.dart';
 
 class DiaryData {
   DateTime createdAt;
-  List<UserData> users;
+  List<int> usersId;
   String title;
   String body;
   DiaryData(
     this.createdAt,
-    this.users,
+    this.usersId,
     this.title,
     this.body,
   );

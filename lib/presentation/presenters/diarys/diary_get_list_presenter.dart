@@ -30,7 +30,8 @@ class DiaryGetListPresenterNotifier
   handle() async {
     final usecase = ref.watch(userGetDetailUseCaseProvider);
     final input = ref.watch(diaryGetListInputProvider.notifier).state;
-    state = AsyncValue.data((usecase.handle(input).diaries));
+    final output = await usecase.handle(input);
+    state = AsyncValue.data(output.diaries);
   }
 }
 

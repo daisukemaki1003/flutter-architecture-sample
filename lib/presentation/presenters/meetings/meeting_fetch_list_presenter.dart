@@ -7,9 +7,8 @@ import '../../../domain/usecases/meetings/fetch_list/meeting_fetch_list_output.d
 class MeetingFetchListPresenter {
   final MeetingFetchListUseCase _usecase = MeetingFetchListInteractor();
 
-  Stream<MeetingFetchListOutput> handle() async* {
+  Future<MeetingFetchListOutput> handle() async {
     MeetingFetchListInput input = MeetingFetchListInput();
-    MeetingFetchListOutput output = _usecase.handle(input);
-    yield output;
+    return await _usecase.handle(input);
   }
 }
