@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:man_memo_v2/domain/entity/enum/occupation.dart';
+import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
 import '../../../containers/user_editor/page.dart';
@@ -21,14 +23,14 @@ class ProfileWidgetComponent extends StatelessWidget {
                   "名前": user.name,
                   "年齢": user.age.toString(),
                   "誕生日": user.birthday,
-                  "出身地": user.birthplace,
-                  "居住地": user.residence,
+                  "出身地": user.birthplace.nameValue!,
+                  "居住地": user.residence.nameValue!,
                 },
               ),
               _profileWidget(
                 "仕事",
                 {
-                  "職種": user.occupation,
+                  "職種": user.occupation.nameValue!,
                   "休日": user.holiday.toString(),
                 },
               ),

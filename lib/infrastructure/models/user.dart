@@ -1,4 +1,7 @@
+import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
+
+import '../../domain/entity/enum/occupation.dart';
 
 const String tableUsers = 'users';
 
@@ -123,10 +126,10 @@ class UserData {
       icon: entity.icon,
       age: entity.age,
       birthday: entity.birthday,
-      birthplace: entity.birthplace,
-      residence: entity.residence,
+      birthplace: entity.birthplace.nameValue!,
+      residence: entity.residence.nameValue!,
       holiday: entity.holiday,
-      occupation: entity.occupation,
+      occupation: entity.occupation.nameValue!,
       memo: entity.memo);
 
   UserEntity toEntity() => UserEntity(
@@ -136,9 +139,9 @@ class UserData {
       icon: icon,
       age: age,
       birthday: birthday,
-      birthplace: birthplace,
-      residence: residence,
+      birthplace: PrefecturesExtension.from(birthplace),
+      residence: PrefecturesExtension.from(residence),
       holiday: holiday,
-      occupation: occupation,
+      occupation: OccupatioExtension.from(occupation),
       memo: memo);
 }

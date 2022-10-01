@@ -1,6 +1,8 @@
+import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'package:man_memo_v2/domain/usecases/users_usecase.dart';
 
+import '../entity/enum/occupation.dart';
 import '../i_repositories/users_repository.dart';
 
 class UsersInteractor implements UsersUseCase {
@@ -16,10 +18,10 @@ class UsersInteractor implements UsersUseCase {
         icon: "icon",
         age: 21,
         birthday: "birthday",
-        birthplace: "birthplace",
-        residence: "residence",
+        birthplace: PrefecturesEnum.aichi,
+        residence: PrefecturesEnum.chiba,
         holiday: 0,
-        occupation: "occupation",
+        occupation: OccupatioEenum.student,
         memo: "memo");
     return await usersRepository.add(user);
   }

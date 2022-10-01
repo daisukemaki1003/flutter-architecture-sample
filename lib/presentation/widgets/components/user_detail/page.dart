@@ -29,12 +29,6 @@ class UserDetailPageComponent extends StatelessWidget {
                   floating: true,
                   snap: false,
 
-                  // pinned: true,
-                  actions: const [
-                    /// ユーザー編集へ遷移
-                    EditButtonComponent(),
-                  ],
-
                   /// ユーザープロフィールBar
                   flexibleSpace: ProfileBarContainer(user),
 

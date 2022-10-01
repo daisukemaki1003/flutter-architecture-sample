@@ -46,14 +46,12 @@ class EditStringPege extends StatelessWidget {
             hintText: 'ユーザーIDを入力してください',
             isDense: true,
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-
             suffixIcon: Icon(
               Icons.cancel,
               color: Colors.grey,
               size: 20,
             ),
             suffixIconConstraints: BoxConstraints(minWidth: 10, minHeight: 10),
-            // border: InputBorder.none,
           ),
         ),
       ),

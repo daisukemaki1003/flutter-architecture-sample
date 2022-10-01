@@ -1,3 +1,6 @@
+import '../enum/occupation.dart';
+import '../enum/prefectures.dart';
+
 class UserEntity {
   final int? id; // User id
   final DateTime createdAt; // 作成日
@@ -6,10 +9,10 @@ class UserEntity {
 
   final int age; // 年齢
   final String birthday; // 誕生日
-  final String birthplace; // 出身地
-  final String residence; // 居住地
+  final PrefecturesEnum birthplace; // 出身地
+  final PrefecturesEnum residence; // 居住地
   final int holiday; // 休日
-  final String occupation; // 職業
+  final OccupatioEenum occupation; // 職業
   final String memo; // メモ
 
   UserEntity({
