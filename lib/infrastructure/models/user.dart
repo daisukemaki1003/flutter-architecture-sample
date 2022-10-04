@@ -32,6 +32,8 @@ class UserFields {
   static const String holiday = "_holiday";
   static const String occupation = "_occupation";
   static const String memo = "_memo";
+
+  static var userIds;
 }
 
 ///

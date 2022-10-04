@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
 
-import '../../../../presenters/diarys/diary_update_presenter.dart';
+import '../../../../providers/diaries/diary_model.dart';
 import '../../../components/diary_list/parts/diary.dart';
 import '../../diary/page.dart';
 
 class DiaryContainer extends ConsumerWidget {
   const DiaryContainer(this.diary, {super.key});
 
-  final DiaryEntity diary;
+  final DiaryModel diary;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedDiary =
-        ref.watch(diaryUpdatePresenterNotifierProvider.notifier);
-
     tap() {
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) {
-            selectedDiary.open(diary);
-            return const DiaryPageContainer();
+            // selectedDiary.open(diary);
+            return DiaryPageContainer(diary);
           },
         ),
       );

@@ -1,6 +1,6 @@
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
-import '../../domain/i_repositories/users_repository.dart';
+import '../../domain/repositories/users_repository.dart';
 import '../datasources/users_datasource.dart';
 import '../models/user.dart';
 
@@ -22,7 +22,7 @@ class UsersRepositoryImpl implements UsersRepository {
   }
 
   @override
-  Future<List<UserEntity>> getAll() async {
+  Future<List<UserEntity>> fetchAll() async {
     final datas = await usersDatabase.readAllUsers();
     return datas.map((e) => e.toEntity()).toList();
   }

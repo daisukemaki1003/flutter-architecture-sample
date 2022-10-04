@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
 
 class UserIconListWidget extends StatelessWidget {
   const UserIconListWidget({
@@ -8,7 +7,7 @@ class UserIconListWidget extends StatelessWidget {
     required this.height,
   });
 
-  final List<UserEntity> users;
+  final List<int> users;
   final double height;
 
   @override

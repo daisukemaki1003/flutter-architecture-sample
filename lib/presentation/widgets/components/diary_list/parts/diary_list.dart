@@ -1,16 +1,14 @@
-// ignore_for_file: depend_on_referenced_packages
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
-import 'package:man_memo_v2/presentation/widgets/containers/diary_list/parts/diary.dart';
+
+import '../../../../providers/diaries/diary_model.dart';
+import '../../../containers/diary_list/parts/diary.dart';
 
 class DiaryListComponent extends ConsumerWidget {
   const DiaryListComponent(this.diaries, {super.key});
 
-  final List<DiaryEntity> diaries;
+  final List<DiaryModel> diaries;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

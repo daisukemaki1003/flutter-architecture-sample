@@ -1,9 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class UserAddForm {
-  final String name;
-  UserAddForm({required this.name});
-}
+import '../models/user_add_form.dart';
 
 final userAddFormProvider = Provider((ref) {
   final name = ref.watch(nameProvider);

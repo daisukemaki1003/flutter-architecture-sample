@@ -1,34 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
-import '../presenters/users_presenter.dart';
+import '../../../presenters/users_presenter.dart';
+import '../models/users.dart';
 import 'user_add_form.dart';
-
-///
-/// View model
-class UsersViewModel {
-  List<UserEntity> users;
-  List<UserEntity> searchResults = [];
-  UsersViewModel(this.users);
-}
 
 ///
 /// Provider
 final usersViewModelNotifierProvider =
     StateNotifierProvider<UsersViewModelNotifier, AsyncValue<UsersViewModel>>(
-  (ref) => UsersViewModelNotifier(ref)..initialize(),
-);
+        (ref) {
+  return UsersViewModelNotifier(ref, ref.watch(userPresenterProvider))
+    ..initialize();
+});
 
 ///
 /// State
 class UsersViewModelNotifier extends StateNotifier<AsyncValue<UsersViewModel>> {
-  UsersViewModelNotifier(this.ref)
+  UsersViewModelNotifier(this.ref, this.userPresenter)
       : super(const AsyncValue<UsersViewModel>.loading());
   final Ref ref;
-  late UserPresenter userPresenter;
+  final UserPresenter userPresenter;
 
   Future<void> initialize() async {
-    userPresenter = ref.watch(userPresenterProvider);
     final users = await userPresenter.getList();
     state = AsyncValue.data(UsersViewModel(users));
   }

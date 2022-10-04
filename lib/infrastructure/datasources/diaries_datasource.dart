@@ -2,25 +2,24 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../models/user.dart';
+import '../models/diary.dart';
 
-class UsersDatabase {
-  static final UsersDatabase instance = UsersDatabase._init();
+class DiariesDatabase {
+  static final DiariesDatabase instance = DiariesDatabase._init();
 
   static Database? _database;
 
-  UsersDatabase._init();
+  DiariesDatabase._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('users.db');
+    _database = await _initDB('diaries.db');
     return _database!;
   }
 
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
-    print(dbPath);
     final path = join(dbPath, filePath);
 
     return await openDatabase(path, version: 1, onCreate: _createDB);
@@ -33,62 +32,56 @@ class UsersDatabase {
     const integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
-CREATE TABLE $tableUsers ( 
-  ${UserFields.id} $idType, 
-  ${UserFields.createdAt} $textType,
-  ${UserFields.name} $textType,
-  ${UserFields.icon} $textType,
-  ${UserFields.age} $integerType,
-  ${UserFields.birthday} $textType,
-  ${UserFields.birthplace} $textType,
-  ${UserFields.residence} $textType,
-  ${UserFields.holiday} $integerType,
-  ${UserFields.occupation} $textType,
-  ${UserFields.memo} $textType
+CREATE TABLE $tableDiaries ( 
+  ${DiaryFields.id} $idType, 
+  ${DiaryFields.createdAt} $textType,
+  ${DiaryFields.userIds} $textType,
+  ${DiaryFields.title} $textType,
+  ${DiaryFields.body} $integerType
   )
 ''');
   }
 
-  Future<UserData> create(UserData user) async {
+  Future<DiaryData> create(DiaryData diary) async {
     final db = await instance.database;
 
-    final id = await db.insert(tableUsers, user.toJson());
-    return user.copy(id: id);
+    final id = await db.insert(tableDiaries, diary.toJson());
+    return diary.copy(id: id);
   }
 
-  Future<UserData> readUser(int id) async {
+  Future<DiaryData> readDiary(int id) async {
     final db = await instance.database;
 
     final maps = await db.query(
-      tableUsers,
-      columns: UserFields.values,
-      where: '${UserFields.id} = ?',
+      tableDiaries,
+      columns: DiaryFields.values,
+      where: '${DiaryFields.id} = ?',
       whereArgs: [id],
     );
 
     if (maps.isNotEmpty) {
-      return UserData.fromJson(maps.first);
+      return DiaryData.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
   }
 
-  Future<List<UserData>> readAllUsers() async {
+  Future<List<DiaryData>> readAllDiaries() async {
     final db = await instance.database;
 
-    const orderBy = '${UserFields.createdAt} ASC';
-    final result = await db.query(tableUsers, orderBy: orderBy);
+    const orderBy = '${DiaryFields.createdAt} ASC';
+    final result = await db.query(tableDiaries, orderBy: orderBy);
 
-    return result.map((json) => UserData.fromJson(json)).toList();
+    return result.map((json) => DiaryData.fromJson(json)).toList();
   }
 
-  Future<int> update(UserData user) async {
+  Future<int> update(DiaryData user) async {
     final db = await instance.database;
 
     return db.update(
-      tableUsers,
+      tableDiaries,
       user.toJson(),
-      where: '${UserFields.id} = ?',
+      where: '${DiaryFields.id} = ?',
       whereArgs: [user.id],
     );
   }
@@ -97,8 +90,8 @@ CREATE TABLE $tableUsers (
     final db = await instance.database;
 
     return await db.delete(
-      tableUsers,
-      where: '${UserFields.id} = ?',
+      tableDiaries,
+      where: '${DiaryFields.id} = ?',
       whereArgs: [id],
     );
   }

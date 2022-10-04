@@ -1,4 +1,4 @@
-import '../../domain/i_repositories/meetings_repository.dart';
+import '../../domain/repositories/meetings_repository.dart';
 import '../datasources/meeting_datasource.dart';
 import '../models/meeting.dart';
 

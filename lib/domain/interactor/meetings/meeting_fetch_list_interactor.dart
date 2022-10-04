@@ -1,5 +1,5 @@
 import 'package:man_memo_v2/infrastructure/repositories/mettings_repository.dart';
-import 'package:man_memo_v2/domain/i_repositories/meetings_repository.dart';
+import 'package:man_memo_v2/domain/repositories/meetings_repository.dart';
 import 'package:man_memo_v2/domain/usecases/meetings/fetch_list/meeting_fetch_list_output.dart';
 
 import 'package:man_memo_v2/domain/usecases/meetings/fetch_list/meeting_fetch_list_input.dart';

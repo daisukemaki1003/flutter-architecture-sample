@@ -5,7 +5,6 @@ import 'presentation/widgets/containers/diary_list/page.dart';
 import 'presentation/widgets/containers/user_list/page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
 

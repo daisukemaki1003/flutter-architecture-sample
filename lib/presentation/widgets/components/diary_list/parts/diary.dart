@@ -2,15 +2,15 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
 
+import '../../../../providers/diaries/diary_model.dart';
 import 'user_icon_list.dart';
 
 class DiaryComponent extends StatelessWidget {
   const DiaryComponent(
       {super.key, required this.diary, required this.onTapFunc});
 
-  final DiaryEntity diary;
+  final DiaryModel diary;
   final Function() onTapFunc;
 
   @override
@@ -53,7 +53,7 @@ class DiaryComponent extends StatelessWidget {
                 DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),
               ),
               const SizedBox(height: 10),
-              UserIconListWidget(users: diary.users, height: 53),
+              UserIconListWidget(users: diary.userIds, height: 53),
             ],
           ),
         ),

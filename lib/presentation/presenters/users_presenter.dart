@@ -4,7 +4,7 @@ import 'package:man_memo_v2/domain/usecases/users_usecase.dart';
 import '../../domain/domain_module.dart';
 import '../../domain/entity/model/user.dart';
 
-import '../view_models/user_add_form.dart';
+import '../providers/users/models/user_add_form.dart';
 
 final userPresenterProvider = Provider((ref) {
   return UserPresenter(

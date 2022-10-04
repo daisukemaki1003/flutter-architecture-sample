@@ -21,6 +21,7 @@ dependencies:
   flutter_markdown: ^0.6.12
   markdown_editable_textinput: ^2.0.2
   sqflite: ^2.1.0
+  banner_listtile: ^2.2.0
 
 
 dev_dependencies:

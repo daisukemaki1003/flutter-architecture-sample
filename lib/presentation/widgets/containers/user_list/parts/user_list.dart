@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'package:man_memo_v2/presentation/widgets/components/user_list/parts/user_list.dart';
 
-import '../../../../view_models/users.dart';
+import '../../../../providers/users/status/users.dart';
 
 class UserListContainer extends ConsumerWidget {
   const UserListContainer({super.key});

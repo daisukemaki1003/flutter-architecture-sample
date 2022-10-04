@@ -8,6 +8,6 @@ class DiaryListPageContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const DiaryListPageComponent();
+    return DiaryListPageComponent();
   }
 }

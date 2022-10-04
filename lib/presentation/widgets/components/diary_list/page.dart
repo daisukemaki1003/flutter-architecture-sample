@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:man_memo_v2/presentation/widgets/containers/diary_editor/page.dart';
 
 import '../../containers/diary_list/parts/diary_list.dart';
 
@@ -25,6 +26,23 @@ class DiaryListPageComponent extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.create,
+              color: Colors.black,
+            ),
+
+            /// 日記作成
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (builder) => const DiaryEditorContainer(),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: const SafeArea(
         child: DiaryListContainer(),
