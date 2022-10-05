@@ -1,12 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/presentation/widgets/containers/diary_editor/page.dart';
 
 import '../../containers/diary_list/parts/diary_list.dart';
 
 class DiaryListPageComponent extends StatelessWidget {
-  const DiaryListPageComponent({super.key});
+  const DiaryListPageComponent({super.key, required this.newDiary});
+
+  final Function() newDiary;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +35,7 @@ class DiaryListPageComponent extends StatelessWidget {
             ),
 
             /// 日記作成
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (builder) => const DiaryEditorContainer(),
-                ),
-              );
-            },
+            onPressed: newDiary,
           )
         ],
       ),

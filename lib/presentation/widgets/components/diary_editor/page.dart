@@ -54,7 +54,7 @@ class DiaryEditorComponent extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             EditorWidgetContainer(),
-            PreviewWidgetContainer(),
+            PreviewWidgetContainer(true),
           ],
         ),
       ),

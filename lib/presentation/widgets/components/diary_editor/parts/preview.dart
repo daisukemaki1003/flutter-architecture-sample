@@ -8,12 +8,14 @@ import 'markdown_body.dart';
 class PreviewWidgetComponent extends StatelessWidget {
   const PreviewWidgetComponent({
     super.key,
+    required this.createdAtIsDone,
     required this.createdAt,
     required this.userIds,
     required this.title,
     required this.body,
   });
 
+  final bool createdAtIsDone;
   final DateTime createdAt;
   final List<int> userIds;
   final String title;
@@ -23,8 +25,7 @@ class PreviewWidgetComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     const externalPaddingInset =
         EdgeInsets.symmetric(horizontal: 30, vertical: 20);
-    const internalPaddingInset =
-        EdgeInsets.symmetric(horizontal: 20, vertical: 30);
+    const internalPaddingInset = EdgeInsets.only(left: 20, right: 20, top: 10);
     DateFormat outputFormat = DateFormat('yyyy年MM月dd日');
 
     return SingleChildScrollView(
@@ -33,24 +34,18 @@ class PreviewWidgetComponent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(child: Text(outputFormat.format(createdAt))),
+            if (createdAtIsDone)
+              Center(child: Text(outputFormat.format(createdAt))),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: internalPaddingInset,
               child: UserIconListWidget(users: userIds, height: 50),
             ),
             Padding(
-              padding: internalPaddingInset,
+              padding: const EdgeInsets.only(left: 5, right: 5, top: 20),
               child: Column(
                 children: [
-                  /// Title
                   MarkdownBodyContainer(
-                    markdownSource: title,
-                    onCopyRequested: (String value) {},
-                  ),
-
-                  /// Body
-                  MarkdownBodyContainer(
-                    markdownSource: body,
+                    markdownSource: "## $title \n$body",
                     onCopyRequested: (String value) {},
                   ),
                 ],

@@ -22,6 +22,7 @@ dependencies:
   markdown_editable_textinput: ^2.0.2
   sqflite: ^2.1.0
   banner_listtile: ^2.2.0
+  grouped_list: ^5.1.2
 
 
 dev_dependencies:

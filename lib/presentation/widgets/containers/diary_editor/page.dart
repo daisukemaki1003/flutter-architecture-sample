@@ -6,11 +6,11 @@ import 'package:man_memo_v2/presentation/widgets/components/diary_editor/page.da
 import '../../../providers/diaries/diaries.dart';
 
 class DiaryEditorContainer extends ConsumerWidget {
-  const DiaryEditorContainer({super.key, this.diary});
+  const DiaryEditorContainer({super.key, required this.newDiary});
 
-  /// null: 新規作成
-  /// none null: 編集
-  final DiaryModel? diary;
+  /// true: 新規作成
+  /// false: 編集
+  final bool newDiary;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,8 +18,8 @@ class DiaryEditorContainer extends ConsumerWidget {
       final diariesNotifier = ref.watch(diariesNotifierProvider.notifier);
 
       return DiaryEditorComponent(
-        title: diary != null ? "編集" : "新規作成",
-        save: diary != null ? diariesNotifier.update : diariesNotifier.create,
+        title: newDiary ? "新規作成" : "編集",
+        save: newDiary ? diariesNotifier.create : diariesNotifier.update,
       );
     });
   }

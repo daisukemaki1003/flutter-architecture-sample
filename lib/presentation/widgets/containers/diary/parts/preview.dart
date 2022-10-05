@@ -5,7 +5,9 @@ import '../../../../providers/diaries/diaries.dart';
 import '../../../components/diary_editor/parts/preview.dart';
 
 class PreviewWidgetContainer extends StatelessWidget {
-  const PreviewWidgetContainer({super.key});
+  const PreviewWidgetContainer(this.createdAtIsDone, {super.key});
+
+  final bool createdAtIsDone;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class PreviewWidgetContainer extends StatelessWidget {
       final diaryBody = ref.watch(diaryBodyProvider.state);
 
       return PreviewWidgetComponent(
+        createdAtIsDone: createdAtIsDone,
         createdAt: diaryCreatedAt.state,
         userIds: diaryUserIds.state,
         title: diaryTitle.state,

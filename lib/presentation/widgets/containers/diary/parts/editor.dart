@@ -22,7 +22,7 @@ class EditorWidgetContainer extends ConsumerWidget {
         ontitleChanged(String title) => diaryTitle.state = title;
         onbodyChanged(String body) => diaryBody.state = body;
 
-        return EditorWidget(
+        return EditorWidgetComponent(
           createdAt: diaryCreatedAt.state,
           userIds: diaryUserIds.state,
           title: diaryTitle.state,

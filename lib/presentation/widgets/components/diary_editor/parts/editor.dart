@@ -2,8 +2,8 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
-class EditorWidget extends StatelessWidget {
-  const EditorWidget({
+class EditorWidgetComponent extends StatelessWidget {
+  const EditorWidgetComponent({
     super.key,
     required this.createdAt,
     required this.userIds,
@@ -45,8 +45,24 @@ class EditorWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(outputFormat.format(DateTime.now())),
-                const Text("3人"),
+                /// 日付選択
+                TextButton(
+                  child: Text(
+                    outputFormat.format(createdAt),
+                  ),
+                  onPressed: () async {
+                    final date = await _datePicker(context);
+                    if (date != null) oncreatedAtChanged(date);
+                  },
+                ),
+
+                /// 遊んだ友人
+                TextButton(
+                  child: Text("${userIds.length}人"),
+                  onPressed: () {
+                    print("object");
+                  },
+                ),
               ],
             ),
           ),
@@ -54,15 +70,6 @@ class EditorWidget extends StatelessWidget {
             height: 1,
             color: Colors.black,
           ),
-          // const Padding(
-          //   padding: EdgeInsets.only(
-          //     left: 30,
-          //     right: 30,
-          //     top: 10,
-          //     bottom: 10,
-          //   ),
-          //   child: UserIconListWidget(users: [1, 2], height: 53),
-          // ),
           Padding(
             padding: externalPaddingInset,
             child: Column(
@@ -102,5 +109,15 @@ class EditorWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<DateTime?> _datePicker(BuildContext context) async {
+    final DateTime? datePicked = await showDatePicker(
+        context: context,
+        initialDate: createdAt,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(DateTime.now().year + 1));
+
+    return datePicked;
   }
 }

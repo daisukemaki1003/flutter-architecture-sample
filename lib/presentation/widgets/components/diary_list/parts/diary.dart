@@ -31,7 +31,7 @@ class DiaryComponent extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        /// 遷移
+        /// 日記画面に遷移
         onTap: onTapFunc,
         child: Padding(
           padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
@@ -40,7 +40,6 @@ class DiaryComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                // diary.content,
                 diary.title,
                 style: const TextStyle(
                   fontSize: 18,

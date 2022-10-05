@@ -6,7 +6,6 @@ import 'package:man_memo_v2/presentation/widgets/containers/diary/parts/preview.
 
 import '../../../providers/diaries/diary_model.dart';
 import '../../containers/diary_editor/page.dart';
-import '../diary_list/parts/user_icon_list.dart';
 
 class DiaryPageComponent extends StatelessWidget {
   const DiaryPageComponent({
@@ -39,7 +38,8 @@ class DiaryPageComponent extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return DiaryEditorContainer(diary: diary);
+                    /// 編集
+                    return const DiaryEditorContainer(newDiary: false);
                   },
                 ),
               );
@@ -51,8 +51,8 @@ class DiaryPageComponent extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const PreviewWidgetContainer(),
+          children: const [
+            PreviewWidgetContainer(false),
           ],
         ),
       ),

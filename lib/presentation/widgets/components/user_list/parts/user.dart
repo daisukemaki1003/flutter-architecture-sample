@@ -1,8 +1,8 @@
 import 'package:banner_listtile/banner_listtile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:grouped_list/grouped_list.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
-import 'package:man_memo_v2/presentation/widgets/containers/user_detail/page.dart';
 
 class UserWidgetComponent extends StatelessWidget {
   const UserWidgetComponent(this.user, {super.key});
