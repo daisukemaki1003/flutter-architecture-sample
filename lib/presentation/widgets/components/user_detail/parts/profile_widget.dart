@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:man_memo_v2/domain/entity/enum/occupation.dart';
 import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
 
+import '../../../../providers/users/users.dart';
 import '../../../containers/user_editor/page.dart';
 
 class ProfileWidgetComponent extends StatelessWidget {
   const ProfileWidgetComponent(this.user, {super.key});
 
-  final UserEntity user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {

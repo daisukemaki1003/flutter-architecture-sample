@@ -3,6 +3,7 @@ import 'package:man_memo_v2/domain/entity/model/user.dart';
 import 'package:man_memo_v2/domain/usecases/users_usecase.dart';
 
 import '../entity/enum/occupation.dart';
+import '../entity/model/holiday.dart';
 import '../repositories/users_repository.dart';
 
 class UsersInteractor implements UsersUseCase {
@@ -20,7 +21,7 @@ class UsersInteractor implements UsersUseCase {
         birthday: "birthday",
         birthplace: PrefecturesEnum.aichi,
         residence: PrefecturesEnum.chiba,
-        holiday: 0,
+        holiday: Holiday(),
         occupation: OccupatioEenum.student,
         memo: "memo");
     return await repository.add(user);

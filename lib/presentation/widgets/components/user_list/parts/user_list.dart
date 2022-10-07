@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
+import 'package:man_memo_v2/presentation/providers/users/user_model.dart';
 
 import '../../../containers/user_detail/page.dart';
 
 class UserListComponent extends StatelessWidget {
   const UserListComponent(this.users, {super.key});
 
-  final List<UserEntity> users;
+  final List<UserModel> users;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class UserListComponent extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(top: 100),
-      child: GroupedListView<UserEntity, String>(
+      child: GroupedListView<UserModel, String>(
         elements: users,
         groupBy: (element) => element.name,
         groupSeparatorBuilder: (String groupByValue) => Container(),

@@ -12,7 +12,9 @@ class UsersDatabase {
   UsersDatabase._init();
 
   Future<Database> get database async {
-    if (_database != null) return _database!;
+    if (_database != null) {
+      return _database!;
+    }
 
     _database = await _initDB('users.db');
     return _database!;

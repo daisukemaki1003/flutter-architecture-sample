@@ -2,9 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:man_memo_v2/domain/usecases/users_usecase.dart';
 
 import '../../domain/domain_module.dart';
-import '../../domain/entity/model/user.dart';
 
-import '../providers/users/models/user_add_form.dart';
+import '../providers/users/user_model.dart';
 
 final userPresenterProvider = Provider((ref) {
   return UserPresenter(
@@ -23,19 +22,23 @@ class UserPresenter {
     this._usersUseCase,
   );
 
-  Future<UserEntity> add(UserAddForm form) async {
-    return await _usersUseCase.add(form.name);
+  Future<UserModel> add(UserModel user) async {
+    final entity = await _usersUseCase.add(user.name);
+    return UserModel.fromEntity(entity);
   }
 
-  Future<UserEntity> fetch(int id) async {
-    return await _usersUseCase.fetch(id);
+  Future<UserModel> fetch(int id) async {
+    final entity = await _usersUseCase.fetch(id);
+    return UserModel.fromEntity(entity);
   }
 
-  Future<List<UserEntity>> getList() async {
-    return await _usersUseCase.fetchAll();
+  Future<List<UserModel>> fetchAll() async {
+    final entities = await _usersUseCase.fetchAll();
+    return entities.map((e) => UserModel.fromEntity(e)).toList();
   }
 
-  Future<List<UserEntity>> search(String keyword) async {
-    return await _usersUseCase.search(keyword);
+  Future<List<UserModel>> search(String keyword) async {
+    final entities = await _usersUseCase.search(keyword);
+    return entities.map((e) => UserModel.fromEntity(e)).toList();
   }
 }

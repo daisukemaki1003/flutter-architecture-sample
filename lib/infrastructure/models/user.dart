@@ -1,4 +1,5 @@
 import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
+import 'package:man_memo_v2/domain/entity/model/holiday.dart';
 import 'package:man_memo_v2/domain/entity/model/user.dart';
 
 import '../../domain/entity/enum/occupation.dart';
@@ -32,8 +33,6 @@ class UserFields {
   static const String holiday = "_holiday";
   static const String occupation = "_occupation";
   static const String memo = "_memo";
-
-  static var userIds;
 }
 
 ///
@@ -130,7 +129,7 @@ class UserData {
       birthday: entity.birthday,
       birthplace: entity.birthplace.nameValue!,
       residence: entity.residence.nameValue!,
-      holiday: entity.holiday,
+      holiday: entity.holiday.toBinary(),
       occupation: entity.occupation.nameValue!,
       memo: entity.memo);
 
@@ -143,7 +142,7 @@ class UserData {
       birthday: birthday,
       birthplace: PrefecturesExtension.from(birthplace),
       residence: PrefecturesExtension.from(residence),
-      holiday: holiday,
+      holiday: Holiday.fromBinary(holiday),
       occupation: OccupatioExtension.from(occupation),
       memo: memo);
 }

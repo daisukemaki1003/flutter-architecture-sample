@@ -37,7 +37,7 @@ setrParams(WidgetRef ref, DiaryModel diary) {
   ref.watch(diaryBodyProvider.state).state = diary.body;
 }
 
-clearParams(WidgetRef ref) {
+clearDiaryModelParams(WidgetRef ref) {
   ref.watch(diaryCreatedAtProvider.state).state = DateTime.now();
   ref.watch(diaryUserIdsProvider.state).state = [];
   ref.watch(diaryTitleProvider.state).state = "";

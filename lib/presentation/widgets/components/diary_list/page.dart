@@ -40,7 +40,7 @@ class DiaryListPageComponent extends StatelessWidget {
         ],
       ),
       body: const SafeArea(
-        child: DiaryListContainer(),
+        child: DiaryListContainer(null),
       ),
     );
   }

@@ -31,14 +31,46 @@ class EditSelectTile extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () {
-        showBottomSheet(
+      onTap: () async {
+        final result = await showModalBottomSheet<bool>(
           context: context,
+          isScrollControlled: true,
           builder: (BuildContext context) {
-            return editSheet;
+            return SizedBox(
+              height: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _sheetHeaderButton(context, 'キャンセル', false),
+                        _sheetHeaderButton(context, '保存', true),
+                      ],
+                    ),
+                  ),
+                  const Divider(height: 1, thickness: 1, color: Colors.black26),
+                  Expanded(child: editSheet),
+                ],
+              ),
+            );
           },
         );
       },
+    );
+  }
+
+  Widget _sheetHeaderButton(BuildContext context, String text, bool saveOr) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextButton(
+        onPressed: () => Navigator.of(context).pop(saveOr),
+        child: Text(text,
+            style: const TextStyle(
+                color: Colors.lightBlue, fontWeight: FontWeight.bold)),
+      ),
     );
   }
 }

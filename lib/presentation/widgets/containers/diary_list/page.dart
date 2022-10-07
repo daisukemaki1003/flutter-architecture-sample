@@ -12,7 +12,7 @@ class DiaryListPageContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     newDiary() {
       /// パラメータクリア
-      clearParams(ref);
+      clearDiaryModelParams(ref);
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (builder) => const DiaryEditorContainer(newDiary: true),

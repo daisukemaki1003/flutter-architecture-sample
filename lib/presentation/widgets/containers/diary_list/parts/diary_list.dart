@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../domain/entity/model/user.dart';
 import '../../../../providers/diaries/diary_model.dart';
 import '../../../../providers/diaries/diaries_state.dart';
+import '../../../../providers/users/users.dart';
 import '../../../components/diary_list/parts/diary_list.dart';
 
 class DiaryListContainer extends ConsumerWidget {
-  const DiaryListContainer({super.key, this.user});
+  const DiaryListContainer(this.user, {super.key});
 
-  final UserEntity? user;
+  final UserModel? user;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

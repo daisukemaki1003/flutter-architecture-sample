@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class EditStringPege extends StatelessWidget {
-  const EditStringPege({super.key});
+  const EditStringPege(this.controller, {super.key});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +40,12 @@ class EditStringPege extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         child: TextField(
-          style: TextStyle(fontSize: 18),
-          decoration: InputDecoration(
+          controller: controller,
+          style: const TextStyle(fontSize: 18),
+          decoration: const InputDecoration(
             hintText: 'ユーザーIDを入力してください',
             isDense: true,
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),

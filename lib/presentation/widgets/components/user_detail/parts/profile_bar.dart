@@ -2,12 +2,13 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
+
+import '../../../../providers/users/users.dart';
 
 class ProfileBarComponent extends StatelessWidget {
   const ProfileBarComponent({super.key, required this.user});
 
-  final UserEntity user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {

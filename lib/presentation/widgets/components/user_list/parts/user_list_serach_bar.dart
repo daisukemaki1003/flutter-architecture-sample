@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:man_memo_v2/presentation/providers/users/user_model.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 class SerachBarComponent extends StatelessWidget {
   const SerachBarComponent({
     super.key,
     required this.search,
-    required this.searchResultClear,
-    required this.searchResultWidget,
+    required this.searchResults,
   });
 
   final Function(String keyword) search;
-  final Function() searchResultClear;
-  final Widget searchResultWidget;
+  final List<UserModel> searchResults;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +31,10 @@ class SerachBarComponent extends StatelessWidget {
       width: isPortrait ? 600 : 500,
       debounceDelay: const Duration(milliseconds: 500),
       transition: CircularFloatingSearchBarTransition(),
-      onSubmitted: ((query) async => await search(query)),
-      onFocusChanged: ((isFocused) => searchResultClear),
+      onSubmitted: ((query) async {
+        await search(query);
+        print(searchResults);
+      }),
       actions: const [],
       builder: (context, transition) {
         return ClipRRect(
@@ -44,7 +45,18 @@ class SerachBarComponent extends StatelessWidget {
           child: Material(
             color: Colors.white,
             elevation: 4.0,
-            child: searchResultWidget,
+            child: SingleChildScrollView(
+              child: Column(
+                children: searchResults
+                    .map(
+                      (user) => ListTile(
+                        title: Text(user.name),
+                        subtitle: const Text("body text"),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
           ),
         );
       },

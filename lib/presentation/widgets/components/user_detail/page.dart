@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
 
+import '../../../providers/users/users.dart';
 import '../../containers/diary_list/parts/diary_list.dart';
 import '../../containers/user_detail/parts/profile_bar.dart';
 import '../../containers/user_detail/parts/profile_widget.dart';
-import 'parts/edit_button.dart';
+
 import 'parts/tab_bar.dart';
 
 class UserDetailPageComponent extends StatelessWidget {
   const UserDetailPageComponent({super.key, required this.user});
 
-  final UserEntity user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class UserDetailPageComponent extends StatelessWidget {
               ProfileWidgetContainer(user),
 
               /// 日記一覧
-              DiaryListContainer(user: user),
+              DiaryListContainer(user),
             ],
           ),
         ),

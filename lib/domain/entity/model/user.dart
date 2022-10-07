@@ -1,5 +1,6 @@
 import '../enum/occupation.dart';
 import '../enum/prefectures.dart';
+import 'holiday.dart';
 
 class UserEntity {
   final int? id; // User id
@@ -11,7 +12,7 @@ class UserEntity {
   final String birthday; // 誕生日
   final PrefecturesEnum birthplace; // 出身地
   final PrefecturesEnum residence; // 居住地
-  final int holiday; // 休日
+  final Holiday holiday; // 休日
   final OccupatioEenum occupation; // 職業
   final String memo; // メモ
 

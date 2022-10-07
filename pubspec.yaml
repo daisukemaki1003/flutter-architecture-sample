@@ -23,6 +23,7 @@ dependencies:
   sqflite: ^2.1.0
   banner_listtile: ^2.2.0
   grouped_list: ^5.1.2
+  smart_select: ^4.3.2
 
 
 dev_dependencies:

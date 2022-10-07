@@ -1,5 +1,3 @@
-import 'package:man_memo_v2/domain/usecases/core/usecase.dart';
-
 import '../entity/model/user.dart';
 
 abstract class UsersUseCase {
