@@ -11,7 +11,10 @@ final userSearchResultsProvider = StateProvider<List<UserModel>>((ref) => []);
 /// Provider
 final usersNotifierProvider =
     StateNotifierProvider<UsersNotifier, AsyncValue<List<UserModel>>>((ref) {
-  return UsersNotifier(ref, ref.watch(userPresenterProvider))..initialize();
+  return UsersNotifier(
+    ref,
+    ref.watch(userPresenterProvider),
+  )..initialize();
 });
 
 ///
@@ -21,7 +24,7 @@ class UsersNotifier extends StateNotifier<AsyncValue<List<UserModel>>> {
       : super(const AsyncValue<List<UserModel>>.loading());
 
   final Ref ref;
-  final UserPresenter presenter;
+  final UsersPresenter presenter;
 
   Future<void> initialize() async {
     final users = await presenter.fetchAll();
