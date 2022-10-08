@@ -1,3 +1,3 @@
-abstract class UseCase<InputData, OutputData> {
-  OutputData handle(InputData input);
+abstract class UseCase<Input, Output> {
+  Future<Output> handle(Input input);
 }
