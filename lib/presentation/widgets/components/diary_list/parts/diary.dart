@@ -2,22 +2,19 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
 
+import '../../../../providers/diaries/diary_model.dart';
 import 'user_icon_list.dart';
 
 class DiaryComponent extends StatelessWidget {
   const DiaryComponent(
       {super.key, required this.diary, required this.onTapFunc});
 
-  final DiaryEntity diary;
+  final DiaryModel diary;
   final Function() onTapFunc;
 
   @override
   Widget build(BuildContext context) {
-    const userIcon =
-        "https://gws-ug.jp/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png";
-
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 140,
@@ -34,7 +31,7 @@ class DiaryComponent extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        /// 遷移
+        /// 日記画面に遷移
         onTap: onTapFunc,
         child: Padding(
           padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
@@ -43,7 +40,6 @@ class DiaryComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                // diary.content,
                 diary.title,
                 style: const TextStyle(
                   fontSize: 18,
@@ -56,7 +52,7 @@ class DiaryComponent extends StatelessWidget {
                 DateFormat('yyyy年M月d日 H:m').format(diary.createdAt),
               ),
               const SizedBox(height: 10),
-              UserIconListWidget(users: diary.users, height: 53),
+              UserIconListWidget(users: diary.userIds, height: 53),
             ],
           ),
         ),

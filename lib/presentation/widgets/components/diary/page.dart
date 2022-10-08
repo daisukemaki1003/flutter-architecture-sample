@@ -2,11 +2,10 @@
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
 import 'package:man_memo_v2/presentation/widgets/containers/diary/parts/preview.dart';
 
+import '../../../providers/diaries/diary_model.dart';
 import '../../containers/diary_editor/page.dart';
-import '../diary_list/parts/user_icon_list.dart';
 
 class DiaryPageComponent extends StatelessWidget {
   const DiaryPageComponent({
@@ -14,7 +13,7 @@ class DiaryPageComponent extends StatelessWidget {
     required this.diary,
   });
 
-  final DiaryEntity diary;
+  final DiaryModel diary;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,8 @@ class DiaryPageComponent extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const DiaryEditorContainer();
+                    /// 編集
+                    return const DiaryEditorContainer(newDiary: false);
                   },
                 ),
               );
@@ -47,16 +47,14 @@ class DiaryPageComponent extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30, top: 20),
-            child: UserIconListWidget(users: diary.users, height: 50),
-          ),
-          const PreviewWidgetContainer(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            PreviewWidgetContainer(false),
+          ],
+        ),
       ),
     );
   }

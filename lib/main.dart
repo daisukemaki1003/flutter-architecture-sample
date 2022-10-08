@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'presentation/widgets/containers/diary_list/page.dart';
 import 'presentation/widgets/containers/user_list/page.dart';
 
-void main() {
+void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyStatefulWidget(),
+      home: const Material(child: MyStatefulWidget()),
     );
   }
 }

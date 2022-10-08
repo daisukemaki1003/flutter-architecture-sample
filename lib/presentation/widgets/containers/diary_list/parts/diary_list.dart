@@ -1,23 +1,21 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:man_memo_v2/domain/entity/model/diary.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
 
-import '../../../../presenter/diarys/diary_get_list_presenter.dart';
+import '../../../../providers/diaries/diary_model.dart';
+import '../../../../providers/diaries/diaries_state.dart';
+import '../../../../providers/users/users.dart';
 import '../../../components/diary_list/parts/diary_list.dart';
 
 class DiaryListContainer extends ConsumerWidget {
-  const DiaryListContainer({super.key, this.user});
+  const DiaryListContainer(this.user, {super.key});
 
-  final UserEntity? user;
+  final UserModel? user;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final diaries = ref.watch(diaryGetListPresenterNotifierProvider);
+    final diariesNotifier = ref.watch(diariesNotifierProvider);
 
-    return diaries.map(
+    return diariesNotifier.map(
       error: (_) => const Text('On Error'),
       loading: (_) => const Center(child: CircularProgressIndicator()),
       data: (data) {
@@ -25,11 +23,11 @@ class DiaryListContainer extends ConsumerWidget {
           return DiaryListComponent(data.value);
         }
 
-        final List<DiaryEntity> diaries = [];
-        for (var lDiary in data.value) {
-          for (var lUser in lDiary.users) {
-            if (user!.userId == lUser.userId) {
-              diaries.add(lDiary);
+        final List<DiaryModel> diaries = [];
+        for (var diary in data.value) {
+          for (var id in diary.userIds) {
+            if (user!.id == id) {
+              diaries.add(diary);
               break;
             }
           }

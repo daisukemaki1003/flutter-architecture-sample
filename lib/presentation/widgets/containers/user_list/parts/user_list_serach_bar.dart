@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../presenter/users/user_search_presenter.dart';
+import '../../../../providers/users/users_state.dart';
 import '../../../components/user_list/parts/user_list_serach_bar.dart';
 
 class SerachBarContainer extends ConsumerWidget {
@@ -9,37 +9,15 @@ class SerachBarContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userSearch = ref.watch(userSearchPresenterNotifierProvider);
-    final userSearchPresenter =
-        ref.watch(userSearchPresenterNotifierProvider.notifier);
-
-    Widget searchResults = Consumer(
+    return Consumer(
       builder: (context, ref, _) {
-        return userSearch.map(
-          error: (_) => const Text('On Error'),
-          loading: (_) => const CircularProgressIndicator(),
-          data: (data) {
-            return SingleChildScrollView(
-              child: Column(
-                children: data.value
-                    .map(
-                      (user) => ListTile(
-                        title: Text(user.name),
-                        subtitle: const Text("body text"),
-                      ),
-                    )
-                    .toList(),
-              ),
-            );
-          },
+        final usersNotifier = ref.watch(usersNotifierProvider.notifier);
+        final userSearchResults = ref.watch(userSearchResultsProvider.state);
+        return SerachBarComponent(
+          search: usersNotifier.search,
+          searchResults: userSearchResults.state,
         );
       },
-    );
-
-    return SerachBarComponent(
-      search: userSearchPresenter.handle,
-      searchResultClear: userSearchPresenter.clear,
-      searchResultWidget: searchResults,
     );
   }
 }

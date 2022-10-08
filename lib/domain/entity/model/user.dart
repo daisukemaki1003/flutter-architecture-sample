@@ -1,13 +1,32 @@
+import '../enum/occupation.dart';
+import '../enum/prefectures.dart';
+import 'holiday.dart';
+
 class UserEntity {
-  final String userId;
-  final DateTime createdAt;
+  final int? id; // User id
+  final DateTime createdAt; // 作成日
+  final String name; // 名前
+  final String icon; // アイコンパス
 
-  final String name;
-  String? iconPath;
+  final int age; // 年齢
+  final String birthday; // 誕生日
+  final PrefecturesEnum birthplace; // 出身地
+  final PrefecturesEnum residence; // 居住地
+  final Holiday holiday; // 休日
+  final OccupatioEenum occupation; // 職業
+  final String memo; // メモ
 
-  UserEntity(
-    this.userId,
-    this.createdAt,
-    this.name,
-  );
+  UserEntity({
+    this.id,
+    required this.createdAt,
+    required this.name,
+    required this.icon,
+    required this.age,
+    required this.birthday,
+    required this.birthplace,
+    required this.residence,
+    required this.holiday,
+    required this.occupation,
+    required this.memo,
+  });
 }

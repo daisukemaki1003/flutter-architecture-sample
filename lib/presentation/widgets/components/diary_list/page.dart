@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../../containers/diary_list/parts/diary_list.dart';
 
 class DiaryListPageComponent extends StatelessWidget {
-  const DiaryListPageComponent({super.key});
+  const DiaryListPageComponent({super.key, required this.newDiary});
+
+  final Function() newDiary;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,20 @@ class DiaryListPageComponent extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.create,
+              color: Colors.black,
+            ),
+
+            /// 日記作成
+            onPressed: newDiary,
+          )
+        ],
       ),
       body: const SafeArea(
-        child: DiaryListContainer(),
+        child: DiaryListContainer(null),
       ),
     );
   }

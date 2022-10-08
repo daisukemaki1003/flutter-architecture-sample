@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/user.dart';
 
+import '../../../providers/users/users.dart';
 import '../../containers/diary_list/parts/diary_list.dart';
 import '../../containers/user_detail/parts/profile_bar.dart';
 import '../../containers/user_detail/parts/profile_widget.dart';
-import 'parts/edit_button.dart';
+
 import 'parts/tab_bar.dart';
 
 class UserDetailPageComponent extends StatelessWidget {
   const UserDetailPageComponent({super.key, required this.user});
 
-  final UserEntity user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: DefaultTabController(
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 200, 230, 255),
+      body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -26,15 +27,10 @@ class UserDetailPageComponent extends StatelessWidget {
                 sliver: SliverAppBar(
                   expandedHeight: 200 + kToolbarHeight,
                   floating: true,
-                  snap: true,
-                  // pinned: true,
-                  actions: const [
-                    /// ユーザー編集へ遷移
-                    EditButtonComponent(),
-                  ],
+                  snap: false,
 
                   /// ユーザープロフィールBar
-                  flexibleSpace: const ProfileBarContainer(),
+                  flexibleSpace: ProfileBarContainer(user),
 
                   /// タブ
                   bottom: PreferredSize(
@@ -56,10 +52,10 @@ class UserDetailPageComponent extends StatelessWidget {
           body: TabBarView(
             children: [
               /// ユーザー詳細
-              const ProfileWidgetContainer(),
+              ProfileWidgetContainer(user),
 
               /// 日記一覧
-              DiaryListContainer(user: user),
+              DiaryListContainer(user),
             ],
           ),
         ),

@@ -1,41 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:man_memo_v2/domain/entity/model/user_detail.dart';
+import 'package:man_memo_v2/domain/entity/enum/occupation.dart';
+import 'package:man_memo_v2/domain/entity/enum/prefectures.dart';
+
+import '../../../../providers/users/users.dart';
+import '../../../containers/user_editor/page.dart';
 
 class ProfileWidgetComponent extends StatelessWidget {
-  const ProfileWidgetComponent({super.key, required this.user});
+  const ProfileWidgetComponent(this.user, {super.key});
 
-  final UserDetailEntity user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          _profileWidget(
-            "基本情報",
-            {
-              "名前": user.userBase.name,
-              "年齢": user.age.toString(),
-              "誕生日": user.birthday,
-              "出身地": user.birthplace,
-              "居住地": user.residence,
-            },
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              _profileWidget(
+                "基本情報",
+                {
+                  "名前": user.name,
+                  "年齢": user.age.toString(),
+                  "誕生日": user.birthday,
+                  "出身地": user.birthplace.nameValue!,
+                  "居住地": user.residence.nameValue!,
+                },
+              ),
+              _profileWidget(
+                "仕事",
+                {
+                  "職種": user.occupation.nameValue!,
+                  "休日": user.holiday.toString(),
+                },
+              ),
+              _profileWidget(
+                "メモ",
+                {
+                  "メモ": user.memo,
+                },
+              ),
+            ],
           ),
-          _profileWidget(
-            "仕事",
-            {
-              "職種": user.occupation,
-              "休日": user.holiday.toString(),
-            },
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 76, 141, 195),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(100))),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 13)),
+              child: const Text(
+                'プロフィールを編集',
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (builder) => const UserEditorPageContainer(),
+                  ),
+                );
+              },
+            ),
           ),
-          _profileWidget(
-            "メモ",
-            {
-              "メモ": user.memo,
-            },
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

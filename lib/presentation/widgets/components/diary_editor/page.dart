@@ -6,8 +6,13 @@ import '../../containers/diary/parts/editor.dart';
 import '../../containers/diary/parts/preview.dart';
 
 class DiaryEditorComponent extends StatelessWidget {
-  const DiaryEditorComponent({super.key, required this.save});
+  const DiaryEditorComponent({
+    super.key,
+    required this.title,
+    required this.save,
+  });
 
+  final String title;
   final Function() save;
 
   @override
@@ -21,13 +26,14 @@ class DiaryEditorComponent extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: appBarBackgroundColor,
-          title: const Text(
-            "編集",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+          title: Text(
+            title,
+            style: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.w500),
           ),
           leading: IconButton(
             icon: backButtonIcon,
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: Navigator.of(context).pop,
           ),
           actions: [
             TextButton(
@@ -48,7 +54,7 @@ class DiaryEditorComponent extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             EditorWidgetContainer(),
-            PreviewWidgetContainer(),
+            PreviewWidgetContainer(true),
           ],
         ),
       ),
