@@ -6,13 +6,13 @@ import '../../domain/domain_module.dart';
 import '../providers/users/user_model.dart';
 
 final userPresenterProvider = Provider((ref) {
-  return UserPresenter(ref.watch(usersUseCaseProvider));
+  return UsersPresenter(ref.watch(usersUseCaseProvider));
 });
 
-class UserPresenter {
+class UsersPresenter {
   final UsersUseCase _usersUseCase;
 
-  UserPresenter(this._usersUseCase);
+  UsersPresenter(this._usersUseCase);
 
   Future<UserModel> add(UserModel user) async {
     final entity = await _usersUseCase.add(user.name);
